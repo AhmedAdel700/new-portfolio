@@ -176,6 +176,7 @@ export default function Contact() {
                                     disabled={formStatus !== 'idle'}
                                     onMouseEnter={() => setIsHovered(true)}
                                     onMouseLeave={() => setIsHovered(false)}
+                                    suppressHydrationWarning
                                     className={`w-full relative group overflow-hidden rounded-2xl p-[1px] transition-all duration-300 mt-4 ${formStatus === 'success' ? 'bg-emerald-500' : 'bg-gradient-to-r from-[#7FFFD4]/50 via-emerald-500/50 to-[#7FFFD4]/50 hover:from-[#7FFFD4] hover:via-emerald-400 hover:to-[#7FFFD4]'}`}
                                 >
                                     <div className={`relative flex items-center justify-center gap-3 px-8 py-5 rounded-[15px] transition-all duration-300 ${formStatus === 'success' ? 'bg-emerald-500' : 'bg-[#030014] group-hover:bg-opacity-0'}`}>
