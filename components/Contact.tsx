@@ -21,7 +21,7 @@ export default function Contact() {
     };
 
     return (
-        <section id="contact" className="relative w-full py-32 bg-[#030014] overflow-hidden selection:bg-[#7FFFD4] selection:text-black">
+        <section id="contact" className="relative w-full py-24 md:py-32 bg-[#030014] overflow-hidden selection:bg-[#7FFFD4] selection:text-black">
             {/* Background Effects */}
             <div className="absolute inset-0 z-0 opacity-20 pointer-events-none mix-blend-screen">
                 <PlasmaWave
@@ -43,7 +43,7 @@ export default function Contact() {
                         <Sparkles className="w-4 h-4 text-[#7FFFD4]" />
                         <span className="text-white/80 text-sm font-medium tracking-wide uppercase">Let's Connect</span>
                     </div>
-                    <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tight mb-6 leading-tight">
+                    <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white tracking-tight mb-6 leading-tight">
                         Got a project in <br className="hidden md:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7FFFD4] to-emerald-400">mind?</span>
                     </h2>
                     <p className="text-white/50 text-lg md:text-xl max-w-2xl font-light">
@@ -57,7 +57,7 @@ export default function Contact() {
                     {/* Left: Contact Info */}
                     <div className="lg:col-span-5 flex flex-col gap-8">
                         {/* Main Contact Card */}
-                        <div className="bg-white/[0.02] border border-white/10 rounded-[2rem] p-8 md:p-10 backdrop-blur-xl hover:bg-white/[0.04] transition-colors duration-500 relative overflow-hidden group">
+                        <div className="bg-white/[0.02] border border-white/10 rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-10 backdrop-blur-xl hover:bg-white/[0.04] transition-colors duration-500 relative overflow-hidden group">
                             <div className="absolute top-0 right-0 w-64 h-64 bg-[#7FFFD4]/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 group-hover:bg-[#7FFFD4]/10 transition-colors duration-500" />
                             
                             <h3 className="text-2xl font-semibold text-white mb-10 relative z-10">Contact Information</h3>
@@ -96,7 +96,7 @@ export default function Contact() {
                         </div>
 
                         {/* Social Links Card */}
-                        <div className="bg-white/[0.02] border border-white/10 rounded-[2rem] p-8 md:p-10 backdrop-blur-xl hover:bg-white/[0.04] transition-colors duration-500">
+                        <div className="bg-white/[0.02] border border-white/10 rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-10 backdrop-blur-xl hover:bg-white/[0.04] transition-colors duration-500">
                             <h3 className="text-xl font-semibold text-white mb-8">Follow Me</h3>
                             <div className="flex flex-wrap gap-4">
                                 {[
@@ -120,7 +120,7 @@ export default function Contact() {
 
                     {/* Right: Form */}
                     <div className="lg:col-span-7">
-                        <div className="bg-white/[0.02] border border-white/10 rounded-[2.5rem] p-8 md:p-12 backdrop-blur-xl relative overflow-hidden shadow-2xl">
+                        <div className="bg-white/[0.02] border border-white/10 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-12 backdrop-blur-xl relative overflow-hidden shadow-2xl">
                             {/* Decorative top gradient line */}
                             <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#7FFFD4]/50 to-transparent opacity-50" />
                             
@@ -136,6 +136,7 @@ export default function Contact() {
                                         <input 
                                             type="text" 
                                             required
+                                            suppressHydrationWarning
                                             placeholder="John Doe" 
                                             className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-[#7FFFD4]/50 focus:border-[#7FFFD4]/50 transition-all focus:bg-white/[0.07]"
                                         />
@@ -145,6 +146,7 @@ export default function Contact() {
                                         <input 
                                             type="email" 
                                             required
+                                            suppressHydrationWarning
                                             placeholder="john@example.com" 
                                             className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-[#7FFFD4]/50 focus:border-[#7FFFD4]/50 transition-all focus:bg-white/[0.07]"
                                         />
@@ -156,6 +158,7 @@ export default function Contact() {
                                     <input 
                                         type="text" 
                                         required
+                                        suppressHydrationWarning
                                         placeholder="Project Inquiry" 
                                         className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-[#7FFFD4]/50 focus:border-[#7FFFD4]/50 transition-all focus:bg-white/[0.07]"
                                     />
@@ -165,6 +168,7 @@ export default function Contact() {
                                     <label className="text-white/60 text-sm font-medium ml-1 transition-colors group-focus-within:text-[#7FFFD4]">Message</label>
                                     <textarea 
                                         required
+                                        suppressHydrationWarning
                                         rows={5} 
                                         placeholder="Tell me about your project..." 
                                         className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-[#7FFFD4]/50 focus:border-[#7FFFD4]/50 transition-all resize-none focus:bg-white/[0.07]"

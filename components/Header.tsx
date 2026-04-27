@@ -2,25 +2,25 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { Menu, X } from 'lucide-react';
 
 export default function Header() {
     const [scrolled, setScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState('Home');
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 20);
             
-            // Fallback for Home section when at the very top
             if (window.scrollY < 100) {
                 setActiveSection('Home');
             }
         };
 
-        // Intersection Observer for sections
         const observerOptions = {
             root: null,
-            rootMargin: '-40% 0px -40% 0px', // Trigger when section is in the middle of the screen
+            rootMargin: '-40% 0px -40% 0px',
             threshold: 0
         };
 
@@ -37,7 +37,6 @@ export default function Header() {
 
         const observer = new IntersectionObserver(observerCallback, observerOptions);
         
-        // Target sections
         ['about', 'projects', 'contact'].forEach((id) => {
             const el = document.getElementById(id);
             if (el) observer.observe(el);
@@ -58,24 +57,24 @@ export default function Header() {
     ];
 
     return (
-        <header className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 flex justify-center pointer-events-none ${scrolled ? 'pt-4' : 'pt-8'}`}>
+        <header className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 flex justify-center pointer-events-none ${scrolled ? 'pt-2 md:pt-4' : 'pt-4 md:pt-8'}`}>
             <nav className={`
-                w-full max-w-[1450px] mx-6 flex items-center justify-between px-10 py-4 transition-all duration-700 pointer-events-auto
+                relative w-full max-w-[1450px] mx-4 md:mx-6 flex items-center justify-between px-6 md:px-10 py-3 md:py-4 transition-all duration-700 pointer-events-auto
                 ${scrolled 
-                    ? 'bg-[#030014]/60 backdrop-blur-[20px] rounded-[2.5rem] border border-white/10 shadow-[0_30px_60px_rgba(0,0,0,0.5)]' 
+                    ? 'bg-[#030014]/60 backdrop-blur-[20px] rounded-[2rem] md:rounded-[2.5rem] border border-white/10 shadow-[0_30px_60px_rgba(0,0,0,0.5)]' 
                     : 'bg-transparent border-transparent'}
             `}>
-                {/* Logo - Sleek & Modern */}
-                <Link href="/" className="group flex items-center gap-2">
+                {/* Logo */}
+                <Link href="/" className="group flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
                     <div className="relative">
-                        <span className="text-white font-black text-2xl tracking-tighter transition-all duration-500 group-hover:tracking-normal">DEV</span>
+                        <span className="text-white font-black text-xl md:text-2xl tracking-tighter transition-all duration-500 group-hover:tracking-normal">DEV</span>
                         <div className="absolute -bottom-1 left-0 w-full h-[1px] bg-gradient-to-r from-[#7FFFD4] to-transparent scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
                     </div>
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#7FFFD4] shadow-[0_0_15px_#7FFFD4] animate-pulse" />
+                    <span className="w-2 md:w-2.5 h-2 md:h-2.5 rounded-full bg-[#7FFFD4] shadow-[0_0_15px_#7FFFD4] animate-pulse" />
                 </Link>
 
-                {/* Modern Nav Island */}
-                <div className="flex items-center gap-2 p-1.5 bg-white/[0.03] border border-white/5 rounded-full backdrop-blur-sm shadow-inner">
+                {/* Desktop Nav Island */}
+                <div className="hidden lg:flex items-center gap-2 p-1.5 bg-white/[0.03] border border-white/5 rounded-full backdrop-blur-sm shadow-inner">
                     {navLinks.map((link) => {
                         const isActive = activeSection === link.name;
                         return (
@@ -99,11 +98,51 @@ export default function Header() {
                     })}
                 </div>
 
-                {/* Mobile Menu Icon (Refined) */}
-                <button className="lg:hidden flex flex-col gap-1.5 group p-2">
-                    <div className="w-6 h-[1.5px] bg-white group-hover:bg-[#7FFFD4] transition-colors" />
-                    <div className="w-4 h-[1.5px] bg-[#7FFFD4] ml-auto group-hover:w-6 transition-all" />
+                {/* Mobile Menu Toggle */}
+                <button 
+                    className="lg:hidden text-white/70 hover:text-[#7FFFD4] transition-colors p-2"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                >
+                    {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                 </button>
+
+                {/* Mobile Menu Drawer */}
+                <div className={`
+                    absolute top-full left-0 right-0 mt-4 p-8 lg:hidden
+                    bg-[#030014]/95 backdrop-blur-2xl rounded-[2rem] border border-white/10
+                    transition-all duration-500 transform origin-top
+                    ${isMenuOpen ? 'scale-y-100 opacity-100 visible' : 'scale-y-0 opacity-0 invisible'}
+                `}>
+                    <div className="flex flex-col gap-6">
+                        {navLinks.map((link) => {
+                            const isActive = activeSection === link.name;
+                            return (
+                                <Link
+                                    key={link.name}
+                                    href={link.href}
+                                    className={`
+                                        text-lg font-bold tracking-[0.2em] uppercase transition-all duration-300
+                                        ${isActive ? 'text-[#7FFFD4]' : 'text-white/40 hover:text-white'}
+                                    `}
+                                    onClick={() => {
+                                        setActiveSection(link.name);
+                                        setIsMenuOpen(false);
+                                    }}
+                                >
+                                    {link.name}
+                                </Link>
+                            );
+                        })}
+                    </div>
+                    
+                    <div className="mt-12 pt-8 border-t border-white/5">
+                        <p className="text-[10px] font-black tracking-[0.5em] text-white/20 uppercase mb-4">Availability</p>
+                        <div className="flex items-center gap-3">
+                            <span className="w-2 h-2 rounded-full bg-[#7FFFD4] animate-pulse shadow-[0_0_8px_#7FFFD4]" />
+                            <span className="text-white text-xs font-bold uppercase tracking-widest">Available for projects</span>
+                        </div>
+                    </div>
+                </div>
             </nav>
         </header>
     );

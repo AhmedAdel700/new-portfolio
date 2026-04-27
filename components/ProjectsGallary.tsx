@@ -68,7 +68,7 @@ const projects = [
 
 export default function ProjectsGallary() {
     return (
-        <section id="projects" className="relative w-full py-40 bg-[#030014] overflow-hidden selection:bg-[#7FFFD4] selection:text-black">
+        <section id="projects" className="relative w-full py-24 md:py-40 bg-[#030014] overflow-hidden selection:bg-[#7FFFD4] selection:text-black">
             
             {/* Ambient Background ColorBends - Matched to About section */}
             <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
@@ -96,18 +96,18 @@ export default function ProjectsGallary() {
             <div className="container mx-auto px-6 max-w-[1450px] relative z-10">
                 
                 {/* Header: Left Aligned, High-End Minimalist */}
-                <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 mb-32 border-b border-white/5 pb-16">
+                <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 md:gap-12 mb-16 md:mb-32 border-b border-white/5 pb-8 md:pb-16 text-center lg:text-left">
                     <div className="space-y-6">
                         <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.02] border border-white/10 text-[#7FFFD4] text-[10px] font-black tracking-[0.3em] uppercase">
                             <Monitor className="w-3 h-3" />
                             Work / Selected Projects
                         </div>
-                        <h2 className="text-white text-7xl md:text-[8rem] font-black tracking-tighter uppercase leading-[0.8]">
+                        <h2 className="text-white text-5xl sm:text-6xl md:text-7xl lg:text-[8rem] font-black tracking-tighter uppercase leading-[0.9] lg:leading-[0.8]">
                             PROJECT <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7FFFD4] to-emerald-400">ARCHIVE.</span>
                         </h2>
                     </div>
-                    <p className="text-white/30 text-lg max-w-sm leading-relaxed uppercase tracking-wider font-medium">
+                    <p className="text-white/30 text-base md:text-lg max-w-sm mx-auto lg:mx-0 leading-relaxed uppercase tracking-wider font-medium">
                         A curated selection of digital architectural solutions built with precision.
                     </p>
                 </div>
@@ -124,7 +124,7 @@ export default function ProjectsGallary() {
                                 className="h-full"
                                 style={{ height: '100%' }}
                             >
-                                <div className="relative h-full bg-[#030014]/60 backdrop-blur-3xl rounded-[40px] p-4 flex flex-col justify-between overflow-hidden transition-all duration-700 hover:bg-[#030014]/80">
+                                <div className="relative h-full bg-[#030014]/60 backdrop-blur-3xl rounded-[2rem] md:rounded-[40px] p-4 flex flex-col justify-between overflow-hidden transition-all duration-700 hover:bg-[#030014]/80">
 
                                     {/* Top Section: Image & Category */}
                                     <div className="space-y-8">

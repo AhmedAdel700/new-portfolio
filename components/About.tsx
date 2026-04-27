@@ -50,7 +50,7 @@ export default function About() {
     ];
 
     return (
-        <section id="about" className="relative w-full py-40 bg-[#030014] overflow-hidden selection:bg-[#7FFFD4] selection:text-black">
+        <section id="about" className="relative w-full py-24 md:py-40 bg-[#030014] overflow-hidden selection:bg-[#7FFFD4] selection:text-black">
 
             {/* Ambient Background ColorBends */}
             <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
@@ -78,20 +78,20 @@ export default function About() {
             <div className="container mx-auto px-6 max-w-[1450px] relative z-10">
 
                 {/* 1. High-Impact Intro Row */}
-                <div className="flex flex-col lg:flex-row gap-20 items-start mb-48">
+                <div className="flex flex-col lg:flex-row gap-12 md:gap-20 items-center lg:items-start mb-24 md:mb-48">
 
                     {/* Left: Identity */}
-                    <div className="lg:w-1/2 relative">
-                        <div className="sticky top-40 space-y-8">
+                    <div className="lg:w-1/2 relative w-full">
+                        <div className="lg:sticky lg:top-40 space-y-8 text-center lg:text-left">
                             <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.02] border border-white/10 text-white/40 text-xs font-black tracking-widest uppercase">
                                 <Star className="w-3 h-3 text-[#7FFFD4]" />
                                 Profile / Ahmed Adel
                             </div>
-                            <h2 className="text-white text-7xl md:text-9xl font-black tracking-tighter leading-[0.8]">
+                            <h2 className="text-white text-5xl sm:text-6xl md:text-7xl lg:text-9xl font-black tracking-tighter leading-[0.9] lg:leading-[0.8]">
                                 DIGITAL <br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7FFFD4] to-emerald-400">ARCHITECT.</span>
                             </h2>
-                            <div className="flex gap-12 pt-8">
+                            <div className="flex justify-center lg:justify-start gap-8 md:gap-12 pt-8">
                                 <div className="space-y-1">
                                     <p className="text-[#7FFFD4] text-4xl font-black">2+</p>
                                     <p className="text-white/20 text-[10px] font-bold tracking-widest uppercase">Years Exp</p>
@@ -105,15 +105,15 @@ export default function About() {
                     </div>
 
                     {/* Right: Narrative Bio */}
-                    <div className="lg:w-1/2 pt-12 lg:pt-32">
-                        <div className="space-y-10">
-                            <p className="text-white/80 text-2xl md:text-3xl leading-relaxed font-light">
+                    <div className="lg:w-1/2 pt-8 lg:pt-32 text-center lg:text-left">
+                        <div className="space-y-8 md:space-y-10">
+                            <p className="text-white/80 text-xl md:text-2xl lg:text-3xl leading-relaxed font-light">
                                 I specialize in building <span className="text-[#7FFFD4] font-medium">high-performance web solutions</span> where technical precision meets modern aesthetics.
                             </p>
-                            <p className="text-white/40 text-lg leading-relaxed max-w-xl">
+                            <p className="text-white/40 text-base md:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
                                 Focused on the modern React ecosystem, I solve critical technical challenges with clean architecture and human-centric design.
                             </p>
-                            <div className="grid grid-cols-2 gap-8 pt-8 border-t border-white/5">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-8 border-t border-white/5">
                                 <div className="space-y-2">
                                     <h4 className="text-white font-bold text-sm uppercase tracking-widest">Communication</h4>
                                     <p className="text-white/30 text-xs leading-relaxed">Collaborative storytelling and cross-functional team alignment.</p>
@@ -128,10 +128,10 @@ export default function About() {
                 </div>
 
                 {/* 2. Simplified Technical Pillars */}
-                <div className="space-y-20">
-                    <div className="flex items-end justify-between">
-                        <div className="space-y-4">
-                            <h3 className="text-white text-4xl font-black tracking-tight uppercase">Technical Arsenal</h3>
+                <div className="space-y-12 md:space-y-20">
+                    <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+                        <div className="space-y-4 text-center lg:text-left">
+                            <h3 className="text-white text-3xl md:text-4xl font-black tracking-tight uppercase">Technical Arsenal</h3>
                             <p className="text-white/30 text-sm max-w-md uppercase tracking-wider font-medium">Categorized expertise for high-performance delivery.</p>
                         </div>
                         <div className="hidden lg:block h-[1px] flex-1 bg-gradient-to-r from-white/10 to-transparent ml-20 mb-5" />
@@ -141,7 +141,7 @@ export default function About() {
                         {technicalPillars.map((pillar, i) => (
                             <div
                                 key={i}
-                                className="group relative p-12 rounded-[3.5rem] bg-white/[0.02] border border-white/5 transition-all duration-700 hover:bg-white/[0.04] overflow-hidden flex flex-col justify-between h-full"
+                                className="group relative p-8 md:p-12 rounded-[2rem] md:rounded-[3.5rem] bg-white/[0.02] border border-white/5 transition-all duration-700 hover:bg-white/[0.04] overflow-hidden flex flex-col justify-between h-full"
                             >
                                 {/* Moving Border Beam Effect */}
                                 <div className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0deg,transparent_300deg,#7FFFD4_360deg)] animate-[spin_8s_linear_infinite] opacity-0 group-hover:opacity-20 transition-opacity" />
