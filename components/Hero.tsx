@@ -1,0 +1,158 @@
+'use client';
+
+import dynamic from 'next/dynamic';
+import React from 'react';
+import Image from 'next/image';
+
+// Dynamic import to avoid SSR issues with Three.js
+const LaserFlow = dynamic(
+    () => import('./LaserFlow').then((mod) => mod.LaserFlow),
+    { ssr: false }
+);
+
+export default function Hero() {
+    return (
+        <section className="relative w-full h-screen bg-[#030014] flex flex-col items-center overflow-hidden font-sans">
+            {/* Laser Background - Fixed props as requested */}
+            <div className="absolute inset-0 z-0">
+                <LaserFlow
+                    color="#7FFFD4" // Aquamarine
+                    horizontalBeamOffset={0}
+                    verticalBeamOffset={0.278}
+                    verticalSizing={1.8}
+                    horizontalSizing={1}
+                    wispDensity={1.5}
+                    fogIntensity={0.6}
+                    mouseTiltStrength={0.02}
+                />
+            </div>
+
+            {/* Top Fade Overlay */}
+            <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#030014] to-transparent z-1 pointer-events-none" />
+
+            {/* 1. Beam Area (Top 25vh) */}
+            <div className="h-[25vh] w-full relative z-10 pointer-events-none" />
+
+            {/* 2. Content Card Area (Remaining 75vh) */}
+            <div className="flex-1 w-full max-w-[1500px] px-4 md:px-8 pb-8 relative z-30">
+                
+                {/* Modern Card Body with Gradient Border */}
+                <div className="relative w-full h-full bg-[#030014]/60 backdrop-blur-3xl rounded-[3.5rem] p-8 md:p-16 flex flex-col justify-between overflow-hidden shadow-2xl group/card">
+                    
+                    {/* Modern Fading Border UI */}
+                    <div className="absolute inset-0 rounded-[3.5rem] border-t border-x border-white/[0.08] [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)] pointer-events-none transition-colors group-hover/card:border-[#7FFFD4]/30 duration-700" />
+                    <div className="absolute inset-0 rounded-[3.5rem] bg-gradient-to-br from-[#7FFFD4]/05 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-1000 pointer-events-none" />
+                    <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#7FFFD4]/40 to-transparent opacity-50" />
+
+                    {/* Background decorative text */}
+                    <div className="absolute -bottom-10 -left-10 text-[15rem] font-black text-white/[0.01] select-none leading-none pointer-events-none">
+                        DEV
+                    </div>
+
+                    {/* Top Section: Badge & Intro */}
+                    <div className="flex justify-between items-start z-10">
+                        <div className="space-y-4">
+                            <div className="inline-flex items-center gap-3 px-4 py-1.5 mb-4 rounded-full bg-white/[0.03] border border-white/[0.08] text-white/70 text-[10px] font-bold tracking-[0.2em] uppercase">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#7FFFD4] shadow-[0_0_8px_#7FFFD4]" />
+                                &lt;Creative Web Developer /&gt;
+                            </div>
+                        </div>
+                        
+                        <div className="hidden md:flex gap-8 text-[10px] font-bold tracking-widest text-white/40 uppercase">
+                            <div className="space-y-1">
+                                <p className="text-white/20">Experience</p>
+                                <p className="text-white/80">5+ Years</p>
+                            </div>
+                            <div className="space-y-1">
+                                <p className="text-white/20">Speciality</p>
+                                <p className="text-white/80">Next.js / 3D</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Middle Section: Massive Heading & Image */}
+                    <div className="relative grid lg:grid-cols-12 gap-4 items-start z-10 my-4">
+                        <div className="lg:col-span-8">
+                            <h1 className="text-white text-6xl md:text-9xl font-black tracking-tight leading-[0.85]">
+                                CRAFTING<br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7FFFD4] to-[#A7F3D0]">UNIQUE</span><br />
+                                CODES
+                            </h1>
+                        </div>
+
+                        {/* Image Card Frame */}
+                        <div className="absolute right-0 top-1/2 -translate-y-1/2 lg:relative lg:translate-y-0 lg:col-span-4 flex justify-end lg:-mt-40">
+                            <div className="relative w-56 h-72 md:w-80 md:h-[28rem] group/img cursor-pointer">
+                                <div className="absolute inset-0 bg-[#7FFFD4]/10 blur-[80px] rounded-full scale-90 opacity-50" />
+                                
+                                <div className="absolute -inset-[1px] rounded-[2.5rem] overflow-hidden p-[1px]">
+                                    <div className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0deg,transparent_300deg,#7FFFD4_360deg)] animate-[spin_4s_linear_infinite]" />
+                                </div>
+
+                                <div className="relative h-full w-full bg-[#030014] rounded-[2.4rem] p-1 overflow-hidden">
+                                    <div className="relative h-full w-full rounded-[2.1rem] overflow-hidden grayscale group-hover/img:grayscale-0 transition-all duration-700">
+                                        <Image 
+                                            src="/dev-portrait.png" 
+                                            alt="Developer Portrait"
+                                            fill
+                                            className="object-cover scale-105 group-hover/img:scale-100 transition-transform duration-700"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-[#030014]/60 via-transparent to-transparent opacity-60" />
+                                    </div>
+
+                                    <div className="absolute top-4 left-4 w-10 h-10 border-t-2 border-l-2 border-[#7FFFD4] rounded-tl-xl shadow-[0_0_10px_#7FFFD4]" />
+                                    <div className="absolute bottom-4 right-4 w-10 h-10 border-b-2 border-r-2 border-[#7FFFD4] rounded-br-xl shadow-[0_0_10px_#7FFFD4]" />
+                                    <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#7FFFD4]/40 to-transparent animate-[scan_3s_linear_infinite]" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Bottom Section: Bio & Modern CTAs */}
+                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 z-10">
+                        <div className="max-w-xl space-y-8">
+                            <p className="text-white/50 text-base md:text-lg leading-relaxed">
+                                I transform complex technical challenges into seamless digital experiences. 
+                                Specializing in building high-performance, scalable web applications with a focus on precision and creative engineering.
+                            </p>
+                            
+                            <div className="flex flex-wrap gap-4 items-center">
+                                {/* Modern "Work with me" Button */}
+                                <button className="group relative px-10 py-4 bg-[#7FFFD4] text-[#030014] font-bold rounded-2xl transition-all shadow-[0_0_20px_rgba(127,255,212,0.2)] hover:shadow-[0_0_40px_rgba(127,255,212,0.4)] active:scale-95 cursor-pointer">
+                                    <span>Work with me</span>
+                                </button>
+                                
+                                {/* Modern "View Resume" Button */}
+                                <button className="group relative px-8 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-2xl flex items-center gap-3 hover:bg-white/10 transition-all active:scale-95 cursor-pointer overflow-hidden">
+                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                                    <span>View Resume</span>
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white/40 group-hover:text-[#7FFFD4] transition-colors">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Top Beam Hit Line */}
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-[1px] bg-gradient-to-r from-transparent via-[#7FFFD4] to-transparent shadow-[0_0_20px_rgba(127,255,212,0.6)] z-20" />
+                </div>
+            </div>
+
+            {/* Deeper Bottom Fade for seamless transition to About */}
+            <div className="absolute bottom-0 left-0 right-0 h-[30vh] bg-gradient-to-t from-[#030014] via-[#030014]/60 to-transparent z-20 pointer-events-none" />
+
+            <style jsx>{`
+                @keyframes scan {
+                    0% { transform: translateY(0); opacity: 0; }
+                    50% { opacity: 0.5; }
+                    100% { transform: translateY(100%); opacity: 0; }
+                }
+                @keyframes spin {
+                    from { transform: rotate(0deg); }
+                    to { transform: rotate(360deg); }
+                }
+            `}</style>
+        </section>
+    );
+}
