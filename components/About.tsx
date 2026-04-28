@@ -72,21 +72,20 @@ export default function About() {
                 />
             </div>
 
-            {/* Top Fade to blend with Hero */}
-            <div className="absolute top-0 left-0 right-0 h-[20vh] bg-gradient-to-b from-[#030014] to-transparent z-1 pointer-events-none" />
+
 
             <div className="container mx-auto px-6 max-w-[1450px] relative z-10">
 
                 {/* 1. High-Impact Intro Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-12 lg:gap-x-20 mb-10 lg:mb-20 items-start">
-                    
+
                     {/* Left: Identity (Col 1-7) */}
                     <div className="col-span-1 lg:col-span-7 space-y-8 text-center lg:text-left">
                         <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.02] border border-white/10 text-white/40 text-[11px] md:text-xs font-black tracking-widest uppercase">
                             <Star className="w-3.5 h-3.5 text-[#7FFFD4]" />
                             Profile / Ahmed Adel
                         </div>
-                        
+
                         <h2 className="text-white text-7xl lg:text-8xl 2xl:text-9xl font-black tracking-tighter leading-[0.95] lg:leading-[0.85] uppercase">
                             CREATIVE <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7FFFD4] to-emerald-400">PIONEER</span>
@@ -128,65 +127,83 @@ export default function About() {
                     </div>
                 </div>
 
-                {/* 2. Simplified Technical Pillars */}
-                <div className="space-y-12 md:space-y-20">
-                    <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-                        <div className="space-y-4 text-center lg:text-left">
-                            <h3 className="text-white text-2xl sm:text-3xl md:text-4xl font-black tracking-tight uppercase">Technical Arsenal</h3>
-                            <p className="text-white/30 text-[10px] sm:text-xs md:text-sm max-w-md uppercase tracking-wider font-medium">Categorized expertise for high-performance delivery.</p>
+                {/* 2. Dynamic Tech Wall Layout */}
+                <div className="overflow-hidden">
+                    <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-white/5 pb-8">
+                        <div className="space-y-4 text-center lg:text-left px-6">
+                            <h3 className="text-white text-3xl md:text-5xl font-black tracking-tight uppercase">Technical Stack</h3>
+                            <p className="text-white/30 text-xs md:text-sm max-w-md uppercase tracking-[0.2em] font-bold">The tools and technologies driving my engineering process.</p>
                         </div>
-                        <div className="hidden lg:block h-[1px] flex-1 bg-gradient-to-r from-white/10 to-transparent ml-20 mb-5" />
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                        {technicalPillars.map((pillar, i) => (
-                            <div
-                                key={i}
-                                className="group relative p-8 md:p-12 rounded-[2rem] md:rounded-[3.5rem] bg-white/[0.02] border border-white/5 transition-all duration-700 hover:bg-white/[0.04] overflow-hidden flex flex-col justify-between h-full"
-                            >
-                                {/* Moving Border Beam Effect */}
-                                <div className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0deg,transparent_300deg,#7FFFD4_360deg)] animate-[spin_8s_linear_infinite] opacity-0 group-hover:opacity-20 transition-opacity" />
-
-                                <div className="relative z-10">
-                                    <div className="flex items-start justify-between mb-12">
-                                        <div className="p-4 rounded-3xl bg-[#7FFFD4]/5 text-[#7FFFD4] border border-[#7FFFD4]/20 group-hover:scale-110 group-hover:bg-[#7FFFD4]/10 transition-all duration-500">
-                                            {pillar.icon}
-                                        </div>
-                                        <ShieldCheck className="text-white/5 w-12 h-12 group-hover:text-[#7FFFD4]/20 transition-colors" />
-                                    </div>
-
-                                    <div className="space-y-2 mb-8">
-                                        <p className="text-[#7FFFD4] text-xs font-black tracking-[0.3em] uppercase">{pillar.subtitle}</p>
-                                        <h4 className="text-white text-2xl font-black tracking-tight">{pillar.title}</h4>
-                                    </div>
-
-                                    <p className="text-white/40 text-sm leading-relaxed mb-10 group-hover:text-white/60 transition-colors">
-                                        {pillar.description}
-                                    </p>
+                    <div className="relative flex flex-col gap-6 py-10">
+                        {/* First Row: Moving Left */}
+                        <div className="flex gap-6 animate-marquee-left hover:pause-marquee">
+                            {[
+                                "React.Js", "Next.Js", "TypeScript", "JavaScript",
+                                "Tailwind CSS", "Node.Js", "Express.Js", "Redux Toolkit",
+                                "Framer Motion", "Three.js", "WebGL", "SCSS",
+                                // Duplicate for seamless loop
+                                "React.Js", "Next.Js", "TypeScript", "JavaScript",
+                                "Tailwind CSS", "Node.Js", "Express.Js", "Redux Toolkit",
+                                "Framer Motion", "Three.js", "WebGL", "SCSS"
+                            ].map((skill, i) => (
+                                <div
+                                    key={`${skill}-${i}`}
+                                    className="px-8 py-4 rounded-xl md:rounded-2xl bg-white/[0.02] border border-white/10 text-white/60 text-xs md:text-sm font-bold uppercase tracking-[0.3em] whitespace-nowrap transition-all duration-500 hover:bg-[#7FFFD4] hover:text-[#030014] hover:border-[#7FFFD4] hover:scale-110 cursor-default shadow-xl"
+                                >
+                                    {skill}
                                 </div>
+                            ))}
+                        </div>
 
-                                <div className="relative z-10 flex flex-wrap gap-2 pt-8 border-t border-white/5">
-                                    {pillar.skills.map((skill, si) => (
-                                        <span key={si} className="px-4 py-2 rounded-xl bg-white/[0.03] border border-white/5 text-white/50 text-[10px] font-bold uppercase tracking-widest hover:border-[#7FFFD4]/40 hover:text-white transition-all cursor-default">
-                                            {skill}
-                                        </span>
-                                    ))}
+                        {/* Second Row: Moving Right */}
+                        <div className="flex gap-6 animate-marquee-right hover:pause-marquee">
+                            {[
+                                "ShadCN", "Figma", "Git", "Agile", "REST APIs", "GSAP",
+                                "MongoDB", "PostgreSQL", "Firebase", "AWS", "Vercel", "Docker",
+                                // Duplicate for seamless loop
+                                "ShadCN", "Figma", "Git", "Agile", "REST APIs", "GSAP",
+                                "MongoDB", "PostgreSQL", "Firebase", "AWS", "Vercel", "Docker"
+                            ].map((skill, i) => (
+                                <div
+                                    key={`${skill}-${i}`}
+                                    className="px-8 py-4 rounded-xl md:rounded-2xl bg-white/[0.02] border border-white/10 text-white/60 text-xs md:text-sm font-bold uppercase tracking-[0.3em] whitespace-nowrap transition-all duration-500 hover:bg-[#7FFFD4] hover:text-[#030014] hover:border-[#7FFFD4] hover:scale-110 cursor-default shadow-xl"
+                                >
+                                    {skill}
                                 </div>
+                            ))}
+                        </div>
 
-                                {/* Bottom corner decorative element */}
-                                <div className={`absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-br ${pillar.accent} opacity-5 blur-[60px] group-hover:opacity-20 transition-opacity`} />
-                            </div>
-                        ))}
                     </div>
                 </div>
-            </div>
 
-            <style jsx>{`
-                @keyframes spin {
-                    from { transform: rotate(0deg); }
-                    to { transform: rotate(360deg); }
-                }
-            `}</style>
+                <style jsx>{`
+                    @keyframes marquee-left {
+                        0% { transform: translateX(0); }
+                        100% { transform: translateX(-50%); }
+                    }
+                    @keyframes marquee-right {
+                        0% { transform: translateX(-50%); }
+                        100% { transform: translateX(0); }
+                    }
+                    .animate-marquee-left {
+                        animation: marquee-left 40s linear infinite;
+                        width: fit-content;
+                    }
+                    .animate-marquee-right {
+                        animation: marquee-right 40s linear infinite;
+                        width: fit-content;
+                    }
+                    .hover\:pause-marquee:hover {
+                        animation-play-state: paused;
+                    }
+                    @keyframes spin {
+                        from { transform: rotate(0deg); }
+                        to { transform: rotate(360deg); }
+                    }
+                `}</style>
+            </div>
         </section>
     );
 }
