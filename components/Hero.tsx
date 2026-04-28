@@ -49,10 +49,10 @@ export default function Hero() {
                     {/* Interior Card Background Effect */}
                     <div className="absolute inset-0 z-0 opacity-20 pointer-events-none mix-blend-screen">
                         <PlasmaWave
-                            colors={['#7FFFD4', '#030014']}
+                            colors={['#7FFFD4', '#043525ff']}
                             speed1={0.005}
                             speed2={0.01}
-                            focalLength={0.8}
+                            focalLength={1}
                         />
                     </div>
 
@@ -84,7 +84,7 @@ export default function Hero() {
                             className="hidden md:flex col-span-4 justify-end gap-6 lg:gap-8 text-[8px] md:text-[10px] font-bold tracking-widest text-white/40 uppercase"
                         >
                             <div className="space-y-1">
-                                <p className="text-[#7FFFD4]">Experience</p>
+                                <p className="text-[#7FFFD4]">EXPERIENCE</p>
                                 <p className="text-white/80">3+ Years</p>
                             </div>
                             <div className="space-y-1">
@@ -103,39 +103,66 @@ export default function Hero() {
                             <h1 className="text-white text-6xl md:text-7xl lg:text-8xl 2xl:text-9xl font-black tracking-tight leading-[0.85]">
                                 CRAFTING<br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7FFFD4] to-[#A7F3D0]">UNIQUE</span><br />
-                                Experience
+                                EXPERIENCE
                             </h1>
                         </motion.div>
 
-                        {/* Image Frame - Spans multiple grid rows for cleaner layout */}
+                        {/* User-Provided SVG Blob Image Frame - Shifted Right */}
                         <motion.div
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-                            className="col-span-1 md:col-span-4 md:row-span-2 flex justify-center md:justify-end"
+                            className="col-span-1 md:col-span-4 md:row-span-2 flex justify-center md:justify-end md:translate-x-8 lg:translate-x-12"
                         >
-                            <div className="relative w-64 h-72 md:w-72 md:h-80 lg:w-80 lg:h-[22rem] 2xl:h-[28rem] group/img cursor-pointer">
-                                <div className="absolute inset-0 bg-[#7FFFD4]/10 rounded-full scale-90 opacity-50" />
+                            <div className="relative w-80 h-80 md:w-[380px] md:h-[380px] lg:w-[440px] lg:h-[440px] 2xl:w-[500px] 2xl:h-[500px]">
 
-                                <div className="absolute -inset-[1px] rounded-[2.5rem] overflow-hidden p-[1px]">
-                                    <div className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0deg,transparent_300deg,#7FFFD4_360deg)] animate-[spin_4s_linear_infinite]" />
+                                {/* Hidden SVG Definition for the Normalized User Path */}
+                                <svg width="0" height="0" className="absolute">
+                                    <defs>
+                                        <clipPath id="user-blob" clipPathUnits="objectBoundingBox">
+                                            <path d="M0.6405,0.3645 C0.7215,0.44,0.8535,0.47,0.854,0.5005 C0.855,0.531,0.724,0.562,0.643,0.618 C0.562,0.674,0.531,0.7545,0.4815,0.773 C0.4325,0.791,0.365,0.747,0.2825,0.691 C0.1995,0.635,0.102,0.5675,0.0975,0.496 C0.0935,0.424,0.1825,0.348,0.2655,0.2725 C0.348,0.1965,0.424,0.121,0.477,0.144 C0.53,0.167,0.56,0.289,0.6405,0.3645 Z" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+
+                                {/* Moving Border Background (The Glow) */}
+                                <div
+                                    className="absolute inset-0"
+                                    style={{ clipPath: 'url(#user-blob)' }}
+                                >
+                                    <div className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0deg,transparent_300deg,#7FFFD4_360deg)] animate-[spin_3s_linear_infinite]" />
                                 </div>
 
-                                <div className="relative h-full w-full bg-[#030014] rounded-3xl p-1 overflow-hidden">
-                                    <div className="relative h-full w-full rounded-3xl overflow-hidden transition-all duration-700">
+                                {/* Main Content Image Blob */}
+                                <div className="relative w-full h-full p-[4px] md:p-[5px]">
+                                    <div
+                                        className="relative w-full h-full bg-[#030014] overflow-hidden"
+                                        style={{ clipPath: 'url(#user-blob)' }}
+                                    >
                                         <Image
                                             src="/dev-portrait.png"
-                                            alt="Developer Portrait"
+                                            alt="Ahmed Adel"
                                             fill
-                                            className="object-cover scale-105 group-hover/img:scale-100 transition-transform duration-700"
+                                            className="object-cover"
                                         />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-[#030014]/60 via-transparent to-transparent opacity-60" />
-                                    </div>
 
-                                    <div className="absolute top-4 left-4 w-10 h-10 border-t-2 border-l-2 border-[#7FFFD4] rounded-tl-xl shadow-[0_0_10px_#7FFFD4]" />
-                                    <div className="absolute bottom-4 right-4 w-10 h-10 border-b-2 border-r-2 border-[#7FFFD4] rounded-br-xl shadow-[0_0_10px_#7FFFD4]" />
-                                    <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#7FFFD4]/40 to-transparent animate-[scan_3s_linear_infinite]" />
+                                        {/* Signature Overlay */}
+                                        <div
+                                            className="absolute bottom-0 right-0 w-full h-full bg-[#7FFFD4]/90"
+                                            style={{
+                                                clipPath: 'polygon(100% 65%, 35% 100%, 100% 100%)'
+                                            }}
+                                        >
+                                            <div className="absolute bottom-[10%] right-[12%]">
+                                                <span className="text-[#030014] font-black text-[12px] md:text-sm lg:text-base 2xl:text-lg tracking-tighter uppercase whitespace-nowrap">
+                                                    Ahmed Adel
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+
+
                             </div>
                         </motion.div>
 
