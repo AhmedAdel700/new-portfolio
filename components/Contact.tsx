@@ -2,14 +2,13 @@
 
 import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Link, Sparkles, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Link, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 
 const PlasmaWave = dynamic(() => import('./PlasmaWave'), { ssr: false });
 
 export default function Contact() {
-    const [isHovered, setIsHovered] = useState(false);
     const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -45,7 +44,7 @@ export default function Contact() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 1 }}
-                    className="flex flex-col items-start text-left mb-16 md:mb-24"
+                    className="flex flex-col items-start text-left mb-12"
                 >
                     <motion.div 
                         initial={{ opacity: 0, x: -20 }}
@@ -63,7 +62,7 @@ export default function Contact() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.3 }}
-                        className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tight mb-8 leading-[0.9]"
+                        className="text-7xl lg:text-9xl font-black text-white tracking-tight mb-8 leading-[0.9] uppercase"
                     >
                         GOT A PROJECT<br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7FFFD4] to-emerald-400">IN MIND?</span>

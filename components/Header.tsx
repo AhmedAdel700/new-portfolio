@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -20,7 +21,7 @@ export default function Header() {
 
         const handleScroll = () => {
             setScrolled(window.scrollY > 20);
-            
+
             if (window.scrollY < 100 && pathname !== '/gallery') {
                 setActiveSection('Home');
             }
@@ -44,7 +45,7 @@ export default function Header() {
         };
 
         const observer = new IntersectionObserver(observerCallback, observerOptions);
-        
+
         ['about', 'projects', 'contact'].forEach((id) => {
             const el = document.getElementById(id);
             if (el) observer.observe(el);
@@ -62,8 +63,8 @@ export default function Header() {
         { name: 'Home', href: '/' },
         { name: 'About', href: '/#about' },
         { name: 'Projects', href: '/#projects' },
+        { name: 'Gallery', href: '/gallery' },
         { name: 'Contact', href: '/#contact' },
-        ...(pathname === '/gallery' ? [{ name: 'Gallery', href: '/gallery' }] : [])
     ];
 
     return (
@@ -74,7 +75,7 @@ export default function Header() {
             {/* Mobile Menu Overlay - Fullscreen immersion */}
             <AnimatePresence>
                 {isMenuOpen && (
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -118,9 +119,9 @@ export default function Header() {
                                 );
                             })}
                         </div>
-                        
+
                         {/* Footer Info */}
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.6 }}
@@ -147,20 +148,19 @@ export default function Header() {
 
             <nav className={`
                 relative w-full transition-all duration-700 pointer-events-auto flex items-center justify-between z-[210]
-                ${isMenuOpen 
-                    ? 'bg-[#030014] border-b border-white/10 px-6 py-6 md:px-10 md:py-8' 
-                    : `mx-4 md:mx-6 max-w-[1450px] px-6 md:px-10 py-3 md:py-4 ${scrolled 
-                        ? 'bg-[#030014]/60 backdrop-blur-[20px] rounded-[2rem] md:rounded-[2.5rem] border border-white/10 shadow-[0_30px_60px_rgba(0,0,0,0.5)]' 
+                ${isMenuOpen
+                    ? 'bg-[#030014] border-b border-white/10 px-6 py-6 md:px-10 md:py-8'
+                    : `mx-4 md:mx-6 max-w-[1450px] px-6 md:px-10 py-3 md:py-4 ${scrolled
+                        ? 'bg-[#030014]/60 backdrop-blur-[20px] rounded-[2rem] md:rounded-[2.5rem] border border-white/10 shadow-[0_30px_60px_rgba(0,0,0,0.5)]'
                         : 'bg-transparent border-transparent'}`
                 }
             `}>
-                {/* Logo */}
-                <Link href="/" className="group flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
-                    <div className="relative">
-                        <span className={`text-white font-black tracking-tighter transition-all duration-500 group-hover:tracking-normal ${isMenuOpen ? 'text-2xl' : 'text-xl md:text-2xl'}`}>DEV</span>
-                        <div className="absolute -bottom-1 left-0 w-full h-[1px] bg-gradient-to-r from-[#7FFFD4] to-transparent scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
+                {/* Logo - Image Only */}
+                <Link href="/" className="pointer-events-auto flex items-center" onClick={() => setIsMenuOpen(false)}>
+                    <div className="flex items-center">
+                        <span className="text-white text-xl md:text-2xl font-bold tracking-tight me-1">Ahmed </span>
+                        <span className="text-[#7FFFD4] text-xl md:text-2xl font-bold tracking-tight">Adel</span>
                     </div>
-                    <span className={`rounded-full bg-[#7FFFD4] shadow-[0_0_15px_#7FFFD4] animate-pulse ${isMenuOpen ? 'w-2.5 h-2.5' : 'w-2 md:w-2.5 h-2 md:h-2.5'}`} />
                 </Link>
 
                 {/* Desktop Nav Island */}
@@ -168,13 +168,13 @@ export default function Header() {
                     {navLinks.map((link) => {
                         const isActive = activeSection === link.name;
                         return (
-                            <Link 
-                                key={link.name} 
+                            <Link
+                                key={link.name}
                                 href={link.href}
                                 className={`
                                     relative px-6 py-2.5 rounded-full text-[11px] font-bold tracking-[0.15em] uppercase transition-all duration-500
-                                    ${isActive 
-                                        ? 'text-white bg-white/5 shadow-[0_0_20px_rgba(255,255,255,0.05)]' 
+                                    ${isActive
+                                        ? 'text-white bg-white/5 shadow-[0_0_20px_rgba(255,255,255,0.05)]'
                                         : 'text-white/40 hover:text-white hover:bg-white/[0.02]'}
                                 `}
                                 onClick={() => setActiveSection(link.name)}
@@ -189,7 +189,7 @@ export default function Header() {
                 </div>
 
                 {/* Mobile Menu Toggle */}
-                <button 
+                <button
                     className="lg:hidden text-white/70 hover:text-[#7FFFD4] transition-colors p-2"
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                 >

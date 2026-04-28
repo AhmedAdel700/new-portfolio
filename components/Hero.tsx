@@ -1,6 +1,5 @@
 'use client';
 
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useScreenSize } from '@/hooks/useScreenSize';
 import { motion } from 'framer-motion';
@@ -140,25 +139,11 @@ export default function Hero() {
                                         style={{ clipPath: 'url(#user-blob)' }}
                                     >
                                         <Image
-                                            src="/dev-portrait.png"
+                                            src="/AA.jpeg"
                                             alt="Ahmed Adel"
                                             fill
-                                            className="object-cover"
+                                            className="object-cover object-right p-10"
                                         />
-
-                                        {/* Signature Overlay */}
-                                        <div
-                                            className="absolute bottom-0 right-0 w-full h-full bg-[#7FFFD4]/90"
-                                            style={{
-                                                clipPath: 'polygon(100% 65%, 35% 100%, 100% 100%)'
-                                            }}
-                                        >
-                                            <div className="absolute bottom-[10%] right-[12%]">
-                                                <span className="text-[#030014] font-black text-[12px] md:text-sm lg:text-base 2xl:text-lg tracking-tighter uppercase whitespace-nowrap">
-                                                    Ahmed Adel
-                                                </span>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
 
