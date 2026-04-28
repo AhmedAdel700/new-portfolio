@@ -21,7 +21,7 @@ export default function Contact() {
     };
 
     return (
-        <section id="contact" className="relative w-full py-24 md:py-32 bg-[#030014] overflow-hidden selection:bg-[#7FFFD4] selection:text-black">
+        <section id="contact" className="relative w-full py-10 md:py-20 bg-[#030014] overflow-hidden selection:bg-[#7FFFD4] selection:text-black">
             {/* Background Effects */}
             <div className="absolute inset-0 z-0 opacity-20 pointer-events-none mix-blend-screen">
                 <PlasmaWave
@@ -38,17 +38,20 @@ export default function Contact() {
             <div className="container mx-auto px-6 max-w-7xl relative z-10">
                 
                 {/* Header */}
-                <div className="flex flex-col items-center text-center mb-20 md:mb-28">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10 mb-8 backdrop-blur-md shadow-xl shadow-black/50">
-                        <Sparkles className="w-4 h-4 text-[#7FFFD4]" />
-                        <span className="text-white/80 text-sm font-medium tracking-wide uppercase">Let's Connect</span>
+                <div className="flex flex-col items-start text-left mb-16 md:mb-24">
+                    <div className="inline-flex items-center gap-3 px-3 py-1 md:px-4 md:py-1.5 mb-8 rounded-full bg-white/[0.03] border border-white/[0.08] text-white/70 text-[8px] md:text-[10px] font-bold tracking-[0.2em] uppercase">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#7FFFD4] shadow-[0_0_8px_#7FFFD4]" />
+                        Let's Connect
                     </div>
-                    <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white tracking-tight mb-6 leading-tight">
-                        Got a project in <br className="hidden md:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7FFFD4] to-emerald-400">mind?</span>
+                    
+                    <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tight mb-8 leading-[0.9]">
+                        GOT A PROJECT<br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7FFFD4] to-emerald-400">IN MIND?</span>
                     </h2>
-                    <p className="text-white/50 text-lg md:text-xl max-w-2xl font-light">
+                    
+                    <p className="text-white/50 text-sm md:text-base lg:text-lg max-w-2xl leading-relaxed">
                         Whether you have a specific project or just want to explore possibilities, 
-                        I'm always open to discussing new ideas and opportunities.
+                        I'm always open to discussing new ideas and opportunities. Let's build something exceptional together.
                     </p>
                 </div>
 
@@ -129,76 +132,78 @@ export default function Contact() {
                                 <p className="text-white/40">Fill out the form below and I'll get back to you shortly.</p>
                             </div>
                             
-                            <form onSubmit={handleSubmit} className="space-y-6">
+                            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div className="space-y-2 group">
-                                        <label className="text-white/60 text-sm font-medium ml-1 transition-colors group-focus-within:text-[#7FFFD4]">Name</label>
+                                        <label className="text-white/60 text-[10px] uppercase tracking-wider font-bold ml-1 transition-colors group-focus-within:text-[#7FFFD4]">Name</label>
                                         <input 
                                             type="text" 
                                             required
                                             suppressHydrationWarning
                                             placeholder="John Doe" 
-                                            className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-[#7FFFD4]/50 focus:border-[#7FFFD4]/50 transition-all focus:bg-white/[0.07]"
+                                            className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:ring-1 focus:ring-[#7FFFD4]/50 focus:border-[#7FFFD4]/50 transition-all focus:bg-white/[0.08]"
                                         />
                                     </div>
                                     <div className="space-y-2 group">
-                                        <label className="text-white/60 text-sm font-medium ml-1 transition-colors group-focus-within:text-[#7FFFD4]">Email</label>
+                                        <label className="text-white/60 text-[10px] uppercase tracking-wider font-bold ml-1 transition-colors group-focus-within:text-[#7FFFD4]">Subject</label>
                                         <input 
-                                            type="email" 
+                                            type="text" 
                                             required
                                             suppressHydrationWarning
-                                            placeholder="john@example.com" 
-                                            className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-[#7FFFD4]/50 focus:border-[#7FFFD4]/50 transition-all focus:bg-white/[0.07]"
+                                            placeholder="Project Inquiry" 
+                                            className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:ring-1 focus:ring-[#7FFFD4]/50 focus:border-[#7FFFD4]/50 transition-all focus:bg-white/[0.08]"
                                         />
                                     </div>
                                 </div>
-                                
+
                                 <div className="space-y-2 group">
-                                    <label className="text-white/60 text-sm font-medium ml-1 transition-colors group-focus-within:text-[#7FFFD4]">Subject</label>
+                                    <label className="text-white/60 text-[10px] uppercase tracking-wider font-bold ml-1 transition-colors group-focus-within:text-[#7FFFD4]">Email Address</label>
                                     <input 
-                                        type="text" 
+                                        type="email" 
                                         required
                                         suppressHydrationWarning
-                                        placeholder="Project Inquiry" 
-                                        className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-[#7FFFD4]/50 focus:border-[#7FFFD4]/50 transition-all focus:bg-white/[0.07]"
+                                        placeholder="john@example.com" 
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:ring-1 focus:ring-[#7FFFD4]/50 focus:border-[#7FFFD4]/50 transition-all focus:bg-white/[0.08]"
                                     />
                                 </div>
 
                                 <div className="space-y-2 group">
-                                    <label className="text-white/60 text-sm font-medium ml-1 transition-colors group-focus-within:text-[#7FFFD4]">Message</label>
+                                    <label className="text-white/60 text-[10px] uppercase tracking-wider font-bold ml-1 transition-colors group-focus-within:text-[#7FFFD4]">Message</label>
                                     <textarea 
                                         required
                                         suppressHydrationWarning
                                         rows={5} 
                                         placeholder="Tell me about your project..." 
-                                        className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-[#7FFFD4]/50 focus:border-[#7FFFD4]/50 transition-all resize-none focus:bg-white/[0.07]"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:ring-1 focus:ring-[#7FFFD4]/50 focus:border-[#7FFFD4]/50 transition-all resize-none focus:bg-white/[0.08]"
                                     />
                                 </div>
 
                                 <button 
                                     type="submit" 
                                     disabled={formStatus !== 'idle'}
-                                    onMouseEnter={() => setIsHovered(true)}
-                                    onMouseLeave={() => setIsHovered(false)}
                                     suppressHydrationWarning
-                                    className={`w-full relative group overflow-hidden rounded-2xl p-[1px] transition-all duration-300 mt-4 ${formStatus === 'success' ? 'bg-emerald-500' : 'bg-gradient-to-r from-[#7FFFD4]/50 via-emerald-500/50 to-[#7FFFD4]/50 hover:from-[#7FFFD4] hover:via-emerald-400 hover:to-[#7FFFD4]'}`}
+                                    className={`w-full relative group px-8 py-4 rounded-xl font-bold tracking-wide transition-all duration-300 active:scale-[0.98] cursor-pointer mt-4 overflow-hidden
+                                        ${formStatus === 'success' 
+                                            ? 'bg-emerald-500 text-white shadow-[0_0_30px_rgba(16,185,129,0.4)]' 
+                                            : 'bg-[#7FFFD4] text-[#030014] shadow-[0_0_20px_rgba(127,255,212,0.2)] hover:shadow-[0_0_40px_rgba(127,255,212,0.4)] hover:-translate-y-0.5'}`}
                                 >
-                                    <div className={`relative flex items-center justify-center gap-3 px-8 py-5 rounded-[15px] transition-all duration-300 ${formStatus === 'success' ? 'bg-emerald-500' : 'bg-[#030014] group-hover:bg-opacity-0'}`}>
+                                    {/* Subtle Overlay on hover */}
+                                    <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                                    <div className="relative flex items-center justify-center gap-3">
                                         {formStatus === 'idle' && (
                                             <>
-                                                <span className={`text-lg font-semibold tracking-wide transition-colors duration-300 ${isHovered ? 'text-black' : 'text-white'}`}>
-                                                    Send Message
-                                                </span>
-                                                <Send className={`w-5 h-5 transition-all duration-300 ${isHovered ? 'text-black translate-x-1 -translate-y-1' : 'text-[#7FFFD4]'}`} />
+                                                <span className="text-base md:text-lg">Send Message</span>
+                                                <Send className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
                                             </>
                                         )}
                                         {formStatus === 'submitting' && (
-                                            <div className="w-6 h-6 border-2 border-white/30 border-t-[#7FFFD4] rounded-full animate-spin" />
+                                            <div className="w-6 h-6 border-2 border-[#030014]/30 border-t-[#030014] rounded-full animate-spin" />
                                         )}
                                         {formStatus === 'success' && (
                                             <>
-                                                <span className="text-black text-lg font-semibold tracking-wide">Message Sent Successfully!</span>
-                                                <CheckCircle2 className="w-6 h-6 text-black" />
+                                                <span className="text-base md:text-lg">Message Sent!</span>
+                                                <CheckCircle2 className="w-6 h-6" />
                                             </>
                                         )}
                                     </div>

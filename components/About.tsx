@@ -50,7 +50,7 @@ export default function About() {
     ];
 
     return (
-        <section id="about" className="relative w-full py-24 md:py-40 bg-[#030014] overflow-hidden selection:bg-[#7FFFD4] selection:text-black">
+        <section id="about" className="relative w-full py-10 md:py-20 bg-[#030014] overflow-hidden selection:bg-[#7FFFD4] selection:text-black">
 
             {/* Ambient Background ColorBends */}
             <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
@@ -77,51 +77,52 @@ export default function About() {
 
             <div className="container mx-auto px-6 max-w-[1450px] relative z-10">
 
-                {/* 1. High-Impact Intro Row */}
-                <div className="flex flex-col lg:flex-row gap-12 md:gap-20 items-center lg:items-start mb-24 md:mb-48">
+                {/* 1. High-Impact Intro Grid */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-12 lg:gap-x-20 mb-10 lg:mb-20 items-start">
+                    
+                    {/* Left: Identity (Col 1-7) */}
+                    <div className="col-span-1 lg:col-span-7 space-y-8 text-center lg:text-left">
+                        <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.02] border border-white/10 text-white/40 text-[11px] md:text-xs font-black tracking-widest uppercase">
+                            <Star className="w-3.5 h-3.5 text-[#7FFFD4]" />
+                            Profile / Ahmed Adel
+                        </div>
+                        
+                        <h2 className="text-white text-7xl lg:text-8xl 2xl:text-9xl font-black tracking-tighter leading-[0.95] lg:leading-[0.85] uppercase">
+                            CREATIVE <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7FFFD4] to-emerald-400">PIONEER</span>
+                        </h2>
 
-                    {/* Left: Identity */}
-                    <div className="lg:w-1/2 relative w-full">
-                        <div className="lg:sticky lg:top-40 space-y-8 text-center lg:text-left">
-                            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.02] border border-white/10 text-white/40 text-xs font-black tracking-widest uppercase">
-                                <Star className="w-3 h-3 text-[#7FFFD4]" />
-                                Profile / Ahmed Adel
+                        <div className="flex justify-center lg:justify-start gap-12 pt-4">
+                            <div className="space-y-1">
+                                <p className="text-[#7FFFD4] text-4xl font-black">2+</p>
+                                <p className="text-white/20 text-[10px] font-bold tracking-widest uppercase">Years Exp</p>
                             </div>
-                            <h2 className="text-white text-5xl sm:text-6xl md:text-7xl lg:text-9xl font-black tracking-tighter leading-[0.9] lg:leading-[0.8]">
-                                DIGITAL <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7FFFD4] to-emerald-400">ARCHITECT.</span>
-                            </h2>
-                            <div className="flex justify-center lg:justify-start gap-8 md:gap-12 pt-8">
-                                <div className="space-y-1">
-                                    <p className="text-[#7FFFD4] text-4xl font-black">2+</p>
-                                    <p className="text-white/20 text-[10px] font-bold tracking-widest uppercase">Years Exp</p>
-                                </div>
-                                <div className="space-y-1">
-                                    <p className="text-white text-4xl font-black">24/7</p>
-                                    <p className="text-white/20 text-[10px] font-bold tracking-widest uppercase">Passion</p>
-                                </div>
+                            <div className="space-y-1">
+                                <p className="text-white text-4xl font-black">24/7</p>
+                                <p className="text-white/20 text-[10px] font-bold tracking-widest uppercase">Passion</p>
                             </div>
                         </div>
                     </div>
 
-                    {/* Right: Narrative Bio */}
-                    <div className="lg:w-1/2 pt-8 lg:pt-32 text-center lg:text-left">
-                        <div className="space-y-8 md:space-y-10">
-                            <p className="text-white/80 text-xl md:text-2xl lg:text-3xl leading-relaxed font-light">
+                    {/* Right: Narrative Bio (Col 8-12) */}
+                    <div className="col-span-1 lg:col-span-5 space-y-10 pt-4 lg:pt-16">
+                        <div className="space-y-8">
+                            <p className="text-white/80 text-xl md:text-2xl leading-relaxed font-light text-center lg:text-left">
                                 I specialize in building <span className="text-[#7FFFD4] font-medium">high-performance web solutions</span> where technical precision meets modern aesthetics.
                             </p>
-                            <p className="text-white/40 text-base md:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
+                            <p className="text-white/40 text-sm md:text-base leading-relaxed max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
                                 Focused on the modern React ecosystem, I solve critical technical challenges with clean architecture and human-centric design.
                             </p>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-8 border-t border-white/5">
-                                <div className="space-y-2">
-                                    <h4 className="text-white font-bold text-sm uppercase tracking-widest">Communication</h4>
-                                    <p className="text-white/30 text-xs leading-relaxed">Collaborative storytelling and cross-functional team alignment.</p>
-                                </div>
-                                <div className="space-y-2">
-                                    <h4 className="text-white font-bold text-sm uppercase tracking-widest">Problem Solving</h4>
-                                    <p className="text-white/30 text-xs leading-relaxed">Analytical approach to complex engineering obstacles.</p>
-                                </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-10 border-t border-white/5">
+                            <div className="space-y-3 text-center lg:text-left">
+                                <h4 className="text-[#7FFFD4] font-bold text-[10px] uppercase tracking-[0.2em]">Communication</h4>
+                                <p className="text-white/30 text-xs leading-relaxed">Collaborative storytelling and cross-functional team alignment.</p>
+                            </div>
+                            <div className="space-y-3 text-center lg:text-left">
+                                <h4 className="text-[#7FFFD4] font-bold text-[10px] uppercase tracking-[0.2em]">Problem Solving</h4>
+                                <p className="text-white/30 text-xs leading-relaxed">Analytical approach to complex engineering obstacles.</p>
                             </div>
                         </div>
                     </div>
@@ -131,8 +132,8 @@ export default function About() {
                 <div className="space-y-12 md:space-y-20">
                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
                         <div className="space-y-4 text-center lg:text-left">
-                            <h3 className="text-white text-3xl md:text-4xl font-black tracking-tight uppercase">Technical Arsenal</h3>
-                            <p className="text-white/30 text-sm max-w-md uppercase tracking-wider font-medium">Categorized expertise for high-performance delivery.</p>
+                            <h3 className="text-white text-2xl sm:text-3xl md:text-4xl font-black tracking-tight uppercase">Technical Arsenal</h3>
+                            <p className="text-white/30 text-[10px] sm:text-xs md:text-sm max-w-md uppercase tracking-wider font-medium">Categorized expertise for high-performance delivery.</p>
                         </div>
                         <div className="hidden lg:block h-[1px] flex-1 bg-gradient-to-r from-white/10 to-transparent ml-20 mb-5" />
                     </div>
@@ -155,7 +156,7 @@ export default function About() {
                                     </div>
 
                                     <div className="space-y-2 mb-8">
-                                        <p className="text-[#7FFFD4] text-[10px] font-black tracking-[0.3em] uppercase">{pillar.subtitle}</p>
+                                        <p className="text-[#7FFFD4] text-xs font-black tracking-[0.3em] uppercase">{pillar.subtitle}</p>
                                         <h4 className="text-white text-2xl font-black tracking-tight">{pillar.title}</h4>
                                     </div>
 

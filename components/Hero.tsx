@@ -1,24 +1,26 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import React from 'react';
 import Image from 'next/image';
+import { useScreenSize } from '@/hooks/useScreenSize';
 
-// Dynamic import to avoid SSR issues with Three.js
+// Dynamic imports to avoid SSR issues with Three.js/WebGL
 const LaserFlow = dynamic(
     () => import('./LaserFlow').then((mod) => mod.LaserFlow),
     { ssr: false }
 );
+const PlasmaWave = dynamic(() => import('./PlasmaWave'), { ssr: false });
 
 export default function Hero() {
+    const screen = useScreenSize();
     return (
-        <section className="relative w-full h-screen bg-[#030014] flex flex-col items-center overflow-hidden font-sans">
+        <section className="relative w-full min-h-screen bg-[#030014] flex flex-col items-center overflow-hidden font-sans">
             {/* Laser Background - Fixed props as requested */}
             <div className="absolute inset-0 z-0">
                 <LaserFlow
-                    color="#7FFFD4" // Aquamarine
+                    color="#7FFFD4"
                     horizontalBeamOffset={0}
-                    verticalBeamOffset={0.278}
+                    verticalBeamOffset={screen.isMobile ? 0.26 : screen.xl ? 0.257 : 0.24}
                     verticalSizing={1.8}
                     horizontalSizing={1}
                     wispDensity={1.5}
@@ -34,63 +36,68 @@ export default function Hero() {
             <div className="h-[25vh] w-full relative z-10 pointer-events-none" />
 
             {/* 2. Content Card Area (Remaining 75vh) */}
-            <div className="flex-1 w-full max-w-[1500px] px-4 md:px-8 pb-8 relative z-30">
+            <div className="flex-1 w-full max-w-[1450px] px-4 md:px-8 pb-8 relative z-30">
 
                 {/* Modern Card Body with Gradient Border */}
-                <div className="relative w-full h-full bg-[#030014]/60 backdrop-blur-3xl rounded-[3.5rem] p-8 md:p-16 flex flex-col justify-between overflow-hidden shadow-2xl group/card">
+                <div className="relative w-full 2xl:h-full bg-[#030014]/60 backdrop-blur-3xl rounded-3xl p-5 md:p-10 lg:p-14 flex flex-col justify-between overflow-hidden shadow-2xl group/card">
 
-                    {/* Modern Fading Border UI */}
-                    <div className="absolute inset-0 rounded-[3.5rem] border-t border-x border-white/[0.08] [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)] pointer-events-none transition-colors group-hover/card:border-[#7FFFD4]/30 duration-700" />
-                    <div className="absolute inset-0 rounded-[3.5rem] bg-gradient-to-br from-[#7FFFD4]/05 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-1000 pointer-events-none" />
-                    <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#7FFFD4]/40 to-transparent opacity-50" />
-
-                    {/* Background decorative text */}
-                    <div className="absolute -bottom-10 -left-10 text-[15rem] font-black text-white/[0.01] select-none leading-none pointer-events-none">
-                        DEV
+                    {/* Interior Card Background Effect */}
+                    <div className="absolute inset-0 z-0 opacity-20 pointer-events-none mix-blend-screen">
+                        <PlasmaWave
+                            colors={['#7FFFD4', '#030014']}
+                            speed1={0.005}
+                            speed2={0.01}
+                            focalLength={0.8}
+                        />
                     </div>
 
-                    {/* Top Section: Badge & Intro */}
-                    <div className="flex justify-between items-start z-10">
-                        <div className="space-y-4">
-                            <div className="inline-flex items-center gap-3 px-4 py-1.5 mb-4 rounded-full bg-white/[0.03] border border-white/[0.08] text-white/70 text-[10px] font-bold tracking-[0.2em] uppercase">
+                    {/* Modern Fading Border UI */}
+                    <div className="absolute inset-0 rounded-3xl border-t-2 border-x-2 border-white/[0.15] [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)] pointer-events-none transition-colors group-hover/card:border-[#7FFFD4]/30 duration-700" />
+                    <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#7FFFD4]/05 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-1000 pointer-events-none" />
+                    <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#7FFFD4]/40 to-transparent opacity-50" />
+
+                    {/* Unified Grid Layout */}
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-y-10 md:gap-y-8 items-start z-10 w-full">
+
+                        {/* 1. Top Row: Badge & Info */}
+                        <div className="col-span-1 md:col-span-8">
+                            <div className="inline-flex items-center gap-3 px-3 py-1 md:px-4 md:py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-white/70 text-[8px] md:text-[10px] font-bold tracking-[0.2em] uppercase">
                                 <span className="w-1.5 h-1.5 rounded-full bg-[#7FFFD4] shadow-[0_0_8px_#7FFFD4]" />
                                 &lt;Creative Web Developer /&gt;
                             </div>
                         </div>
 
-                        <div className="hidden md:flex gap-8 text-[10px] font-bold tracking-widest text-white/40 uppercase">
+                        <div className="hidden md:flex col-span-4 justify-end gap-6 lg:gap-8 text-[8px] md:text-[10px] font-bold tracking-widest text-white/40 uppercase">
                             <div className="space-y-1">
-                                <p className="text-white/20">Experience</p>
-                                <p className="text-white/80">5+ Years</p>
+                                <p className="text-[#7FFFD4]">Experience</p>
+                                <p className="text-white/80">3+ Years</p>
                             </div>
                             <div className="space-y-1">
-                                <p className="text-white/20">Speciality</p>
-                                <p className="text-white/80">Next.js / 3D</p>
+                                <p className="text-[#7FFFD4]">Speciality</p>
+                                <p className="text-white/80">Next.js / React</p>
                             </div>
                         </div>
-                    </div>
 
-                    {/* Middle Section: Massive Heading & Image */}
-                    <div className="relative grid lg:grid-cols-12 gap-4 items-start z-10 my-4">
-                        <div className="lg:col-span-8">
-                            <h1 className="text-white text-6xl md:text-9xl font-black tracking-tight leading-[0.85]">
+                        {/* 2. Middle Row: Heading & Image */}
+                        <div className="col-span-1 md:col-span-8">
+                            <h1 className="text-white text-6xl md:text-7xl lg:text-8xl 2xl:text-9xl font-black tracking-tight leading-[0.85]">
                                 CRAFTING<br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7FFFD4] to-[#A7F3D0]">UNIQUE</span><br />
-                                CODES
+                                Experience
                             </h1>
                         </div>
 
-                        {/* Image Card Frame */}
-                        <div className="absolute right-0 top-1/2 -translate-y-1/2 lg:relative lg:translate-y-0 lg:col-span-4 flex justify-end lg:-mt-40">
-                            <div className="relative w-56 h-72 md:w-80 md:h-[28rem] group/img cursor-pointer">
-                                <div className="absolute inset-0 bg-[#7FFFD4]/10 blur-[80px] rounded-full scale-90 opacity-50" />
+                        {/* Image Frame - Spans multiple grid rows for cleaner layout */}
+                        <div className="col-span-1 md:col-span-4 md:row-span-2 flex justify-center md:justify-end">
+                            <div className="relative w-64 h-72 md:w-72 md:h-80 lg:w-80 lg:h-[22rem] 2xl:h-[28rem] group/img cursor-pointer">
+                                <div className="absolute inset-0 bg-[#7FFFD4]/10 rounded-full scale-90 opacity-50" />
 
                                 <div className="absolute -inset-[1px] rounded-[2.5rem] overflow-hidden p-[1px]">
                                     <div className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0deg,transparent_300deg,#7FFFD4_360deg)] animate-[spin_4s_linear_infinite]" />
                                 </div>
 
-                                <div className="relative h-full w-full bg-[#030014] rounded-[2.4rem] p-1 overflow-hidden">
-                                    <div className="relative h-full w-full rounded-[2.1rem] overflow-hidden grayscale group-hover/img:grayscale-0 transition-all duration-700">
+                                <div className="relative h-full w-full bg-[#030014] rounded-3xl p-1 overflow-hidden">
+                                    <div className="relative h-full w-full rounded-3xl overflow-hidden transition-all duration-700">
                                         <Image
                                             src="/dev-portrait.png"
                                             alt="Developer Portrait"
@@ -106,30 +113,28 @@ export default function Hero() {
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    {/* Bottom Section: Bio & Modern CTAs */}
-                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 z-10">
-                        <div className="max-w-xl space-y-8">
-                            <p className="text-white/50 text-base md:text-lg leading-relaxed">
-                                I transform complex technical challenges into seamless digital experiences.
-                                Specializing in building high-performance, scalable web applications with a focus on precision and creative engineering.
-                            </p>
+                        {/* 3. Bottom Row: Bio & Modern CTAs */}
+                        <div className="col-span-1 md:col-span-8 self-end">
+                            <div className="max-w-xl space-y-8">
+                                <p className="text-white/50 text-sm md:text-base lg:text-lg leading-relaxed">
+                                    I transform complex technical challenges into seamless digital experiences.
+                                    Specializing in building high-performance, scalable web applications with a focus on precision and creative engineering.
+                                </p>
 
-                            <div className="flex flex-wrap gap-4 items-center">
-                                {/* Modern "Work with me" Button */}
-                                <button className="group relative px-10 py-4 bg-[#7FFFD4] text-[#030014] font-bold rounded-2xl transition-all shadow-[0_0_20px_rgba(127,255,212,0.2)] hover:shadow-[0_0_40px_rgba(127,255,212,0.4)] active:scale-95 cursor-pointer">
-                                    <span>Work with me</span>
-                                </button>
+                                <div className="flex w-full md:w-auto gap-3 md:gap-4 items-center">
+                                    <button className="flex-1 md:flex-none group relative px-4 py-3 md:px-8 md:py-4 lg:px-10 lg:py-4 bg-[#7FFFD4] text-[#030014] text-xs md:text-sm lg:text-base font-bold rounded-xl md:rounded-2xl transition-all shadow-[0_0_20px_rgba(127,255,212,0.2)] hover:shadow-[0_0_40px_rgba(127,255,212,0.4)] active:scale-95 cursor-pointer">
+                                        <span>Work with me</span>
+                                    </button>
 
-                                {/* Modern "View Resume" Button */}
-                                <button className="group relative px-8 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-2xl flex items-center gap-3 hover:bg-white/10 transition-all active:scale-95 cursor-pointer overflow-hidden">
-                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                                    <span>View Resume</span>
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white/40 group-hover:text-[#7FFFD4] transition-colors">
-                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
-                                    </svg>
-                                </button>
+                                    <button className="flex-1 md:flex-none group relative px-4 py-3 md:px-7 md:py-4 lg:px-8 lg:py-4 bg-white/5 border border-white/10 text-white text-xs md:text-sm lg:text-base font-bold rounded-xl md:rounded-2xl flex items-center justify-center gap-2 md:gap-3 hover:bg-white/10 transition-all active:scale-95 cursor-pointer overflow-hidden">
+                                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                                        <span>View Resume</span>
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white/40 group-hover:text-[#7FFFD4] transition-colors">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>

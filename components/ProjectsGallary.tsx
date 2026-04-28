@@ -68,12 +68,12 @@ const projects = [
 
 export default function ProjectsGallary() {
     return (
-        <section id="projects" className="relative w-full py-24 md:py-40 bg-[#030014] overflow-hidden selection:bg-[#7FFFD4] selection:text-black">
-            
+        <section id="projects" className="relative w-full py-10 md:py-20 bg-[#030014] overflow-hidden selection:bg-[#7FFFD4] selection:text-black">
+
             {/* Ambient Background ColorBends - Matched to About section */}
             <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
-                <ColorBends 
-                    colors={['#7FFFD4', '#030014', '#030014']} 
+                <ColorBends
+                    colors={['#7FFFD4', '#030014', '#030014']}
                     rotation={90}
                     speed={0.2}
                     frequency={1}
@@ -94,7 +94,7 @@ export default function ProjectsGallary() {
             <div className="absolute top-0 left-0 right-0 h-[20vh] bg-gradient-to-b from-[#030014] to-transparent z-1 pointer-events-none" />
 
             <div className="container mx-auto px-6 max-w-[1450px] relative z-10">
-                
+
                 {/* Header: Left Aligned, High-End Minimalist */}
                 <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 md:gap-12 mb-16 md:mb-32 border-b border-white/5 pb-8 md:pb-16 text-center lg:text-left">
                     <div className="space-y-6">
@@ -103,8 +103,8 @@ export default function ProjectsGallary() {
                             Work / Selected Projects
                         </div>
                         <h2 className="text-white text-5xl sm:text-6xl md:text-7xl lg:text-[8rem] font-black tracking-tighter uppercase leading-[0.9] lg:leading-[0.8]">
-                            PROJECT <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7FFFD4] to-emerald-400">ARCHIVE.</span>
+                            PROJECTS <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7FFFD4] to-emerald-400">GALLARY</span>
                         </h2>
                     </div>
                     <p className="text-white/30 text-base md:text-lg max-w-sm mx-auto lg:mx-0 leading-relaxed uppercase tracking-wider font-medium">
@@ -120,15 +120,15 @@ export default function ProjectsGallary() {
                                 color="#7FFFD4"
                                 speed={0.4}
                                 chaos={0.08}
-                                borderRadius={40}
+                                borderRadius={16}
                                 className="h-full"
                                 style={{ height: '100%' }}
                             >
-                                <div className="relative h-full bg-[#030014]/60 backdrop-blur-3xl rounded-[2rem] md:rounded-[40px] p-4 flex flex-col justify-between overflow-hidden transition-all duration-700 hover:bg-[#030014]/80">
+                                <div className="relative h-full bg-[#030014]/60 backdrop-blur-3xl rounded-2xl p-4 flex flex-col justify-between overflow-hidden transition-all duration-700 hover:bg-[#030014]/80">
 
                                     {/* Top Section: Image & Category */}
                                     <div className="space-y-8">
-                                        <div className="relative aspect-[16/11] rounded-[32px] overflow-hidden">
+                                        <div className="relative aspect-[16/11] rounded-xl overflow-hidden">
                                             <Image
                                                 src={project.image}
                                                 alt={project.title}
@@ -179,6 +179,17 @@ export default function ProjectsGallary() {
                     ))}
                 </div>
 
+                <div className="mt-20 flex justify-center">
+                    <Link
+                        href="/gallery"
+                        className="group relative px-10 py-5 bg-[#7FFFD4] text-[#030014] font-black uppercase tracking-[0.2em] text-xs rounded-xl transition-all shadow-[0_0_20px_rgba(127,255,212,0.2)] hover:shadow-[0_0_40px_rgba(127,255,212,0.4)] hover:-translate-y-1 active:scale-95 flex items-center gap-4"
+                    >
+                        <span>View All Masterpieces</span>
+                        <div className="w-8 h-8 rounded-full bg-[#030014] flex items-center justify-center text-[#7FFFD4] group-hover:bg-white group-hover:text-black transition-colors">
+                            <ArrowUpRight className="w-4 h-4" />
+                        </div>
+                    </Link>
+                </div>
             </div>
         </section>
     );
