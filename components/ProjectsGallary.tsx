@@ -5,9 +5,12 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRight, Monitor, Globe, Code2, Zap } from 'lucide-react';
+import { motion } from 'framer-motion';
+
 
 const ColorBends = dynamic(() => import('./ColorBends'), { ssr: false });
-const ElectricBorder = dynamic(() => import('./ElectricBorder'), { ssr: false });
+import ProjectCard from './ProjectCard';
+
 
 const projects = [
     {
@@ -96,90 +99,71 @@ export default function ProjectsGallary() {
             <div className="container mx-auto px-6 max-w-[1450px] relative z-10">
 
                 {/* Header: Left Aligned, High-End Minimalist */}
-                <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 md:gap-12 mb-16 md:mb-32 border-b border-white/5 pb-8 md:pb-16 text-center lg:text-left">
+                <motion.div 
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1 }}
+                    className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 md:gap-12 mb-16 border-b border-white/5 pb-8 md:pb-16 text-center lg:text-left"
+                >
                     <div className="space-y-6">
-                        <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.02] border border-white/10 text-[#7FFFD4] text-[10px] font-black tracking-[0.3em] uppercase">
+                        <motion.div 
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                            className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.02] border border-white/10 text-[#7FFFD4] text-[10px] font-black tracking-[0.3em] uppercase"
+                        >
                             <Monitor className="w-3 h-3" />
                             Work / Selected Projects
-                        </div>
-                        <h2 className="text-white text-5xl sm:text-6xl md:text-7xl lg:text-[8rem] font-black tracking-tighter uppercase leading-[0.9] lg:leading-[0.8]">
+                        </motion.div>
+                        <motion.h2 
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.3 }}
+                            className="text-white text-5xl sm:text-6xl md:text-7xl lg:text-[8rem] font-black tracking-tighter uppercase leading-[0.9] lg:leading-[0.8]"
+                        >
                             PROJECTS <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7FFFD4] to-emerald-400">GALLARY</span>
-                        </h2>
+                        </motion.h2>
                     </div>
-                    <p className="text-white/30 text-base md:text-lg max-w-sm mx-auto lg:mx-0 leading-relaxed uppercase tracking-wider font-medium">
+                    <motion.p 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
+                        className="text-white/30 text-base md:text-lg max-w-sm mx-auto lg:mx-0 leading-relaxed uppercase tracking-wider font-medium"
+                    >
                         A curated selection of digital architectural solutions built with precision.
-                    </p>
-                </div>
+                    </motion.p>
+                </motion.div>
+
 
                 {/* Modern Unified Grid - Equal Height Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 items-stretch">
-                    {projects.map((project) => (
-                        <div key={project.id} className="group flex flex-col h-full">
-                            <ElectricBorder
-                                color="#7FFFD4"
-                                speed={0.4}
-                                chaos={0.08}
-                                borderRadius={16}
-                                className="h-full"
-                                style={{ height: '100%' }}
-                            >
-                                <div className="relative h-full bg-[#030014]/60 backdrop-blur-3xl rounded-2xl p-4 flex flex-col justify-between overflow-hidden transition-all duration-700 hover:bg-[#030014]/80">
-
-                                    {/* Top Section: Image & Category */}
-                                    <div className="space-y-8">
-                                        <div className="relative aspect-[16/11] rounded-xl overflow-hidden">
-                                            <Image
-                                                src={project.image}
-                                                alt={project.title}
-                                                fill
-                                                className="object-cover transition-all duration-1000 group-hover:scale-105"
-                                            />
-                                            <div className="absolute inset-0 bg-gradient-to-t from-[#030014]/60 via-transparent to-transparent opacity-40" />
-
-                                            {/* Minimal Link Puck */}
-                                            <div className="absolute top-5 right-5 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0">
-                                                <Link
-                                                    href={project.link}
-                                                    className="w-12 h-12 rounded-full bg-white text-[#030014] flex items-center justify-center hover:bg-[#7FFFD4] transition-colors shadow-2xl"
-                                                >
-                                                    <ArrowUpRight className="w-6 h-6" />
-                                                </Link>
-                                            </div>
-
-                                            <div className="absolute bottom-6 left-6 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-[#7FFFD4] text-[9px] font-black uppercase tracking-widest">
-                                                {project.category}
-                                            </div>
-                                        </div>
-
-                                        {/* Title & Description */}
-                                        <div className="px-6 space-y-4">
-                                            <h3 className="text-white text-3xl font-black tracking-tight leading-none group-hover:text-[#7FFFD4] transition-colors duration-500">
-                                                {project.title}
-                                            </h3>
-                                            <p className="text-white/40 text-sm leading-relaxed line-clamp-3">
-                                                {project.description}
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    {/* Bottom Section: Skills - Pushed to Bottom */}
-                                    <div className="px-6 pb-6 pt-10 mt-auto">
-                                        <div className="flex flex-wrap gap-4 pt-8 border-t border-white/5">
-                                            {project.skills.map(skill => (
-                                                <span key={skill} className="text-white/20 text-[9px] font-black uppercase tracking-[0.3em] group-hover:text-white/40 transition-colors">
-                                                    {skill}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            </ElectricBorder>
-                        </div>
+                    {projects.map((project, index) => (
+                        <motion.div 
+                            key={project.id} 
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: index * 0.1 }}
+                            className="group flex flex-col h-full"
+                        >
+                            <ProjectCard project={project} />
+                        </motion.div>
                     ))}
                 </div>
 
-                <div className="mt-20 flex justify-center">
+
+                <motion.div 
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="mt-20 flex justify-center"
+                >
                     <Link
                         href="/gallery"
                         className="group relative px-10 py-5 bg-[#7FFFD4] text-[#030014] font-black uppercase tracking-[0.2em] text-xs rounded-xl transition-all shadow-[0_0_20px_rgba(127,255,212,0.2)] hover:shadow-[0_0_40px_rgba(127,255,212,0.4)] hover:-translate-y-1 active:scale-95 flex items-center gap-4"
@@ -189,7 +173,8 @@ export default function ProjectsGallary() {
                             <ArrowUpRight className="w-4 h-4" />
                         </div>
                     </Link>
-                </div>
+                </motion.div>
+
             </div>
         </section>
     );

@@ -3,13 +3,13 @@
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useScreenSize } from '@/hooks/useScreenSize';
+import { motion } from 'framer-motion';
 
 // Dynamic imports to avoid SSR issues with Three.js/WebGL
-const LaserFlow = dynamic(
-    () => import('./LaserFlow').then((mod) => mod.LaserFlow),
-    { ssr: false }
-);
-const PlasmaWave = dynamic(() => import('./PlasmaWave'), { ssr: false });
+import { LaserFlow } from './LaserFlow';
+
+import PlasmaWave from './PlasmaWave';
+
 
 export default function Hero() {
     const screen = useScreenSize();
@@ -39,7 +39,12 @@ export default function Hero() {
             <div className="flex-1 w-full max-w-[1450px] px-4 md:px-8 pb-8 relative z-30">
 
                 {/* Modern Card Body with Gradient Border */}
-                <div className="relative w-full 2xl:h-full bg-[#030014]/60 backdrop-blur-3xl rounded-3xl p-5 md:p-10 lg:p-14 flex flex-col justify-between overflow-hidden shadow-2xl group/card">
+                <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, ease: "easeOut" }}
+                    className="relative w-full 2xl:h-full bg-[#030014]/60 backdrop-blur-3xl rounded-3xl p-5 md:p-10 lg:p-14 flex flex-col justify-between overflow-hidden shadow-2xl group/card"
+                >
 
                     {/* Interior Card Background Effect */}
                     <div className="absolute inset-0 z-0 opacity-20 pointer-events-none mix-blend-screen">
@@ -60,14 +65,24 @@ export default function Hero() {
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-y-10 md:gap-y-8 items-start z-10 w-full">
 
                         {/* 1. Top Row: Badge & Info */}
-                        <div className="col-span-1 md:col-span-8">
+                        <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.6, delay: 0.5 }}
+                            className="col-span-1 md:col-span-8"
+                        >
                             <div className="inline-flex items-center gap-3 px-3 py-1 md:px-4 md:py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-white/70 text-[8px] md:text-[10px] font-bold tracking-[0.2em] uppercase">
                                 <span className="w-1.5 h-1.5 rounded-full bg-[#7FFFD4] shadow-[0_0_8px_#7FFFD4]" />
                                 &lt;Creative Web Developer /&gt;
                             </div>
-                        </div>
+                        </motion.div>
 
-                        <div className="hidden md:flex col-span-4 justify-end gap-6 lg:gap-8 text-[8px] md:text-[10px] font-bold tracking-widest text-white/40 uppercase">
+                        <motion.div
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.6, delay: 0.6 }}
+                            className="hidden md:flex col-span-4 justify-end gap-6 lg:gap-8 text-[8px] md:text-[10px] font-bold tracking-widest text-white/40 uppercase"
+                        >
                             <div className="space-y-1">
                                 <p className="text-[#7FFFD4]">Experience</p>
                                 <p className="text-white/80">3+ Years</p>
@@ -76,19 +91,29 @@ export default function Hero() {
                                 <p className="text-[#7FFFD4]">Speciality</p>
                                 <p className="text-white/80">Next.js / React</p>
                             </div>
-                        </div>
+                        </motion.div>
 
                         {/* 2. Middle Row: Heading & Image */}
-                        <div className="col-span-1 md:col-span-8">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.7 }}
+                            className="col-span-1 md:col-span-8"
+                        >
                             <h1 className="text-white text-6xl md:text-7xl lg:text-8xl 2xl:text-9xl font-black tracking-tight leading-[0.85]">
                                 CRAFTING<br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7FFFD4] to-[#A7F3D0]">UNIQUE</span><br />
                                 Experience
                             </h1>
-                        </div>
+                        </motion.div>
 
                         {/* Image Frame - Spans multiple grid rows for cleaner layout */}
-                        <div className="col-span-1 md:col-span-4 md:row-span-2 flex justify-center md:justify-end">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+                            className="col-span-1 md:col-span-4 md:row-span-2 flex justify-center md:justify-end"
+                        >
                             <div className="relative w-64 h-72 md:w-72 md:h-80 lg:w-80 lg:h-[22rem] 2xl:h-[28rem] group/img cursor-pointer">
                                 <div className="absolute inset-0 bg-[#7FFFD4]/10 rounded-full scale-90 opacity-50" />
 
@@ -112,10 +137,15 @@ export default function Hero() {
                                     <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#7FFFD4]/40 to-transparent animate-[scan_3s_linear_infinite]" />
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
 
                         {/* 3. Bottom Row: Bio & Modern CTAs */}
-                        <div className="col-span-1 md:col-span-8 self-end">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.8 }}
+                            className="col-span-1 md:col-span-8 self-end"
+                        >
                             <div className="max-w-xl space-y-8">
                                 <p className="text-white/50 text-sm md:text-base lg:text-lg leading-relaxed">
                                     I transform complex technical challenges into seamless digital experiences.
@@ -136,12 +166,17 @@ export default function Hero() {
                                     </button>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
 
                     {/* Top Beam Hit Line */}
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-[1px] bg-gradient-to-r from-transparent via-[#7FFFD4] to-transparent shadow-[0_0_20px_rgba(127,255,212,0.6)] z-20" />
-                </div>
+                    <motion.div
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: 1 }}
+                        transition={{ duration: 1.5, delay: 0.2 }}
+                        className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-[1px] bg-gradient-to-r from-transparent via-[#7FFFD4] to-transparent shadow-[0_0_20px_rgba(127,255,212,0.6)] z-20"
+                    />
+                </motion.div>
             </div>
 
             {/* Deeper Bottom Fade for seamless transition to About */}

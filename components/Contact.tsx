@@ -3,6 +3,8 @@
 import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Link, Sparkles, CheckCircle2, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+
 
 const PlasmaWave = dynamic(() => import('./PlasmaWave'), { ssr: false });
 
@@ -38,27 +40,58 @@ export default function Contact() {
             <div className="container mx-auto px-6 max-w-7xl relative z-10">
                 
                 {/* Header */}
-                <div className="flex flex-col items-start text-left mb-16 md:mb-24">
-                    <div className="inline-flex items-center gap-3 px-3 py-1 md:px-4 md:py-1.5 mb-8 rounded-full bg-white/[0.03] border border-white/[0.08] text-white/70 text-[8px] md:text-[10px] font-bold tracking-[0.2em] uppercase">
+                <motion.div 
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1 }}
+                    className="flex flex-col items-start text-left mb-16 md:mb-24"
+                >
+                    <motion.div 
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                        className="inline-flex items-center gap-3 px-3 py-1 md:px-4 md:py-1.5 mb-8 rounded-full bg-white/[0.03] border border-white/[0.08] text-white/70 text-[8px] md:text-[10px] font-bold tracking-[0.2em] uppercase"
+                    >
                         <span className="w-1.5 h-1.5 rounded-full bg-[#7FFFD4] shadow-[0_0_8px_#7FFFD4]" />
                         Let's Connect
-                    </div>
+                    </motion.div>
                     
-                    <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tight mb-8 leading-[0.9]">
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.3 }}
+                        className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tight mb-8 leading-[0.9]"
+                    >
                         GOT A PROJECT<br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7FFFD4] to-emerald-400">IN MIND?</span>
-                    </h2>
+                    </motion.h2>
                     
-                    <p className="text-white/50 text-sm md:text-base lg:text-lg max-w-2xl leading-relaxed">
+                    <motion.p 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
+                        className="text-white/50 text-sm md:text-base lg:text-lg max-w-2xl leading-relaxed"
+                    >
                         Whether you have a specific project or just want to explore possibilities, 
                         I'm always open to discussing new ideas and opportunities. Let's build something exceptional together.
-                    </p>
-                </div>
+                    </motion.p>
+                </motion.div>
+
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
                     
                     {/* Left: Contact Info */}
-                    <div className="lg:col-span-5 flex flex-col gap-8">
+                    <motion.div 
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.5 }}
+                        className="lg:col-span-5 flex flex-col gap-8"
+                    >
                         {/* Main Contact Card */}
                         <div className="bg-white/[0.02] border border-white/10 rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-10 backdrop-blur-xl hover:bg-white/[0.04] transition-colors duration-500 relative overflow-hidden group">
                             <div className="absolute top-0 right-0 w-64 h-64 bg-[#7FFFD4]/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 group-hover:bg-[#7FFFD4]/10 transition-colors duration-500" />
@@ -119,10 +152,16 @@ export default function Contact() {
                                 ))}
                             </div>
                         </div>
-                    </div>
+                        </motion.div>
 
                     {/* Right: Form */}
-                    <div className="lg:col-span-7">
+                    <motion.div 
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.5 }}
+                        className="lg:col-span-7"
+                    >
                         <div className="bg-white/[0.02] border border-white/10 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-12 backdrop-blur-xl relative overflow-hidden shadow-2xl">
                             {/* Decorative top gradient line */}
                             <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#7FFFD4]/50 to-transparent opacity-50" />
@@ -210,8 +249,7 @@ export default function Contact() {
                                 </button>
                             </form>
                         </div>
-                    </div>
-
+                    </motion.div>
                 </div>
             </div>
         </section>
