@@ -12,62 +12,11 @@ const ColorBends = dynamic(() => import('./ColorBends'), { ssr: false });
 import ProjectCard from './ProjectCard';
 
 
-const projects = [
-    {
-        id: 1,
-        title: "Zenith Portfolio",
-        category: "Creative Dev",
-        description: "Interactive 3D portfolio experience with advanced WebGL animations and seamless transitions.",
-        image: "/project-1.png",
-        skills: ["Next.js", "Three.js"],
-        link: "#"
-    },
-    {
-        id: 2,
-        title: "Nexus Dashboard",
-        category: "Enterprise",
-        description: "Real-time analytics platform for enterprise scale, featuring complex data visualization.",
-        image: "/project-2.png",
-        skills: ["React", "TS"],
-        link: "#"
-    },
-    {
-        id: 3,
-        title: "Luxe E-Comm",
-        category: "E-Commerce",
-        description: "High-end shopping experience with elegant motion design and lightning-fast performance.",
-        image: "/project-3.png",
-        skills: ["Nuxt", "Stripe"],
-        link: "#"
-    },
-    {
-        id: 4,
-        title: "Skyline Analytics",
-        category: "Big Data",
-        description: "Big data processing engine and visualization tool for complex information systems.",
-        image: "/project-1.png",
-        skills: ["Python", "AWS"],
-        link: "#"
-    },
-    {
-        id: 5,
-        title: "Crypto Vault",
-        category: "Fintech",
-        description: "Secure digital asset management interface with a focus on high-fidelity security UI.",
-        image: "/project-2.png",
-        skills: ["Solidity", "Ether.js"],
-        link: "#"
-    },
-    {
-        id: 6,
-        title: "Nova Engine",
-        category: "Gaming",
-        description: "Community platform for immersive gaming experiences and player-driven marketplaces.",
-        image: "/project-3.png",
-        skills: ["Unity", "React"],
-        link: "#"
-    }
-];
+import { projects } from '@/lib/data';
+
+// Show first 6 projects on homepage
+const featuredProjects = projects.slice(0, 6);
+
 
 export default function ProjectsGallary() {
     return (
@@ -104,8 +53,10 @@ export default function ProjectsGallary() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 1 }}
-                    className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 md:gap-12 mb-16 border-b border-white/5 pb-8 md:pb-16 text-center lg:text-left"
+                    className="relative flex flex-col lg:flex-row lg:items-end justify-between gap-8 md:gap-12 mb-16 pb-8 md:pb-16 text-center lg:text-left"
                 >
+                    {/* Bottom Horizontal Separator (Signature Mint) */}
+                    <div className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#7FFFD4]/50 to-transparent shadow-[0_0_15px_rgba(127,255,212,0.2)]" />
                     <div className="space-y-6">
                         <motion.div 
                             initial={{ opacity: 0, x: -20 }}
@@ -142,7 +93,7 @@ export default function ProjectsGallary() {
 
                 {/* Modern Unified Grid - Equal Height Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 items-stretch">
-                    {projects.map((project, index) => (
+                    {featuredProjects.map((project, index) => (
                         <motion.div 
                             key={project.id} 
                             initial={{ opacity: 0, y: 40 }}
@@ -158,21 +109,35 @@ export default function ProjectsGallary() {
 
 
                 <motion.div 
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
+                    transition={{ duration: 0.8 }}
                     className="mt-20 flex justify-center"
                 >
-                    <Link
-                        href="/gallery"
-                        className="group relative px-10 py-5 bg-[#7FFFD4] text-[#030014] font-black uppercase tracking-[0.2em] text-xs rounded-xl transition-all shadow-[0_0_20px_rgba(127,255,212,0.2)] hover:shadow-[0_0_40px_rgba(127,255,212,0.4)] hover:-translate-y-1 active:scale-95 flex items-center gap-4"
-                    >
-                        <span>View All Masterpieces</span>
-                        <div className="w-8 h-8 rounded-full bg-[#030014] flex items-center justify-center text-[#7FFFD4] group-hover:bg-white group-hover:text-black transition-colors">
-                            <ArrowUpRight className="w-4 h-4" />
+                    <div className="group relative">
+                        <Link
+                            href="/gallery"
+                            className="relative px-12 py-6 bg-transparent border border-[#7FFFD4]/30 hover:border-[#7FFFD4] rounded-full transition-all duration-700 hover:shadow-[0_0_60px_rgba(127,255,212,0.25)] flex items-center gap-8 overflow-hidden"
+                        >
+                            {/* High-Performance Liquid Fill */}
+                            <div className="absolute inset-0 bg-[#7FFFD4] translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]" />
+                            
+                            <div className="relative z-10 flex items-center gap-6">
+                                <span className="text-[#7FFFD4] group-hover:text-[#030014] text-[13px] font-black uppercase tracking-[0.3em] transition-colors duration-500">
+                                    View All Of My Work
+                                </span>
+                                <div className="w-10 h-10 rounded-full border border-[#7FFFD4]/20 group-hover:border-[#030014]/20 bg-[#7FFFD4]/5 group-hover:bg-[#030014]/10 flex items-center justify-center transition-all duration-500">
+                                    <ArrowUpRight className="w-5 h-5 text-[#7FFFD4] group-hover:text-[#030014] transition-all duration-500 group-hover:rotate-45" />
+                                </div>
+                            </div>
+                        </Link>
+                        
+                        {/* Floating Project Count Badge */}
+                        <div className="absolute -top-4 -right-4 px-4 py-2 bg-[#030014] border border-[#7FFFD4]/50 text-[#7FFFD4] text-[10px] font-black rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0 shadow-[0_0_20px_rgba(127,255,212,0.2)]">
+                            {projects.length}+ PROJECTS
                         </div>
-                    </Link>
+                    </div>
                 </motion.div>
 
             </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Monitor, Filter, Search, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
@@ -9,91 +9,9 @@ import Link from 'next/link';
 const ColorBends = dynamic(() => import('./ColorBends'), { ssr: false });
 import ProjectCard from './ProjectCard';
 
-const categories = ["All", "Creative Dev", "Enterprise", "E-Commerce", "Big Data", "Fintech", "Gaming"];
+import { projects } from '@/lib/data';
 
-const projects = [
-    {
-        id: 1,
-        title: "Zenith Portfolio",
-        category: "Creative Dev",
-        description: "Interactive 3D portfolio experience with advanced WebGL animations and seamless transitions.",
-        image: "/project-1.png",
-        skills: ["Next.js", "Three.js", "WebGL"],
-        link: "#"
-    },
-    {
-        id: 2,
-        title: "Nexus Dashboard",
-        category: "Enterprise",
-        description: "Real-time analytics platform for enterprise scale, featuring complex data visualization.",
-        image: "/project-2.png",
-        skills: ["React", "TS", "D3.js"],
-        link: "#"
-    },
-    {
-        id: 3,
-        title: "Luxe E-Comm",
-        category: "E-Commerce",
-        description: "High-end shopping experience with elegant motion design and lightning-fast performance.",
-        image: "/project-3.png",
-        skills: ["Next.js", "Stripe", "GSAP"],
-        link: "#"
-    },
-    {
-        id: 4,
-        title: "Skyline Analytics",
-        category: "Big Data",
-        description: "Big data processing engine and visualization tool for complex information systems.",
-        image: "/project-1.png",
-        skills: ["Python", "AWS", "FastAPI"],
-        link: "#"
-    },
-    {
-        id: 5,
-        title: "Crypto Vault",
-        category: "Fintech",
-        description: "Secure digital asset management interface with a focus on high-fidelity security UI.",
-        image: "/project-2.png",
-        skills: ["Solidity", "Ether.js", "React"],
-        link: "#"
-    },
-    {
-        id: 6,
-        title: "Nova Engine",
-        category: "Gaming",
-        description: "Community platform for immersive gaming experiences and player-driven marketplaces.",
-        image: "/project-3.png",
-        skills: ["Unity", "React", "Node.js"],
-        link: "#"
-    },
-    {
-        id: 7,
-        title: "Aura AI",
-        category: "Creative Dev",
-        description: "Generative AI interface for artists, focusing on fluid prompt engineering workflows.",
-        image: "/project-1.png",
-        skills: ["PyTorch", "Next.js", "Tailwind"],
-        link: "#"
-    },
-    {
-        id: 8,
-        title: "Velocity OS",
-        category: "Enterprise",
-        description: "Cloud-native operating system dashboard for distributed server clusters.",
-        image: "/project-2.png",
-        skills: ["Go", "Kubernetes", "React"],
-        link: "#"
-    },
-    {
-        id: 9,
-        title: "Prism Shop",
-        category: "E-Commerce",
-        description: "Multi-vendor marketplace with real-time inventory tracking and dynamic pricing.",
-        image: "/project-3.png",
-        skills: ["Shopify", "React", "GraphQL"],
-        link: "#"
-    }
-];
+const categories = ["All", ...new Set(projects.map(p => p.category))];
 
 interface GalleryProps {
     isFullPage?: boolean;

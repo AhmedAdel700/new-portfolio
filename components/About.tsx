@@ -95,14 +95,14 @@ export default function About() {
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7FFFD4] to-emerald-400">PIONEER</span>
                         </h2>
 
-                        <div className="flex justify-center lg:justify-start gap-12 pt-4">
-                            <div className="space-y-1">
-                                <p className="text-[#7FFFD4] text-4xl font-black">3+</p>
-                                <p className="text-white/20 text-[10px] font-bold tracking-widest uppercase">Years Exp</p>
+                        <div className="flex justify-center lg:justify-start gap-16 pt-8">
+                            <div className="space-y-2">
+                                <p className="text-[#7FFFD4] text-5xl md:text-6xl font-black tracking-tighter">3+</p>
+                                <p className="text-white/30 text-[13px] font-black tracking-[0.2em] uppercase">Years Exp</p>
                             </div>
-                            <div className="space-y-1">
-                                <p className="text-white text-4xl font-black">24/7</p>
-                                <p className="text-white/20 text-[10px] font-bold tracking-widest uppercase">Passion</p>
+                            <div className="space-y-2">
+                                <p className="text-white text-5xl md:text-6xl font-black tracking-tighter">24/7</p>
+                                <p className="text-white/30 text-[13px] font-black tracking-[0.2em] uppercase">Passion</p>
                             </div>
                         </div>
                     </motion.div>
@@ -120,20 +120,23 @@ export default function About() {
                                 I specialize in building <span className="text-[#7FFFD4] font-medium">high-performance web solutions</span> where technical precision meets modern aesthetics.
                             </p>
                             <p className="text-white/40 text-sm md:text-base leading-relaxed max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
-                                Focused on the modern React ecosystem, I solve critical technical challenges with clean architecture and human-centric design.
+                                Mastering the synergy of React and Next.js, I architect resilient digital infrastructures that balance sophisticated engineering with refined, human-centric interactions.
                             </p>
                         </div>
-
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-10 border-t border-white/5">
-                            <div className="space-y-3 text-center lg:text-left">
-                                <h4 className="text-[#7FFFD4] font-bold text-[10px] uppercase tracking-[0.2em]">Communication</h4>
-                                <p className="text-white/30 text-xs leading-relaxed">Collaborative storytelling and cross-functional team alignment.</p>
-                            </div>
-                            <div className="space-y-3 text-center lg:text-left">
-                                <h4 className="text-[#7FFFD4] font-bold text-[10px] uppercase tracking-[0.2em]">Problem Solving</h4>
-                                <p className="text-white/30 text-xs leading-relaxed">Analytical approach to complex engineering obstacles.</p>
-                            </div>
-                        </div>
+ 
+                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 pt-16 relative">
+                             {/* Top Horizontal Separator (Signature Mint) */}
+                             <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#7FFFD4]/50 to-transparent shadow-[0_0_15px_rgba(127,255,212,0.2)]" />
+                             
+                             <div className="space-y-4 text-center lg:text-left">
+                                 <h4 className="text-[#7FFFD4] font-black text-xs uppercase tracking-[0.3em]">Strategic Synergy</h4>
+                                 <p className="text-white/40 text-[13px] md:text-sm leading-relaxed font-medium">Translating complex technical roadmaps into clear, collaborative narratives to drive seamless cross-functional alignment.</p>
+                             </div>
+                             <div className="space-y-4 text-center lg:text-left">
+                                 <h4 className="text-[#7FFFD4] font-black text-xs uppercase tracking-[0.3em]">Architectural Logic</h4>
+                                 <p className="text-white/40 text-[13px] md:text-sm leading-relaxed font-medium">Deconstructing intricate system bottlenecks with surgical precision and scalable engineering solutions.</p>
+                             </div>
+                         </div>
                     </motion.div>
                 </div>
 
@@ -145,7 +148,10 @@ export default function About() {
                     transition={{ duration: 0.8 }}
                     className="overflow-hidden"
                 >
-                    <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-white/5 pb-8">
+                    <div className="relative flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12">
+                        {/* Bottom Horizontal Separator (Signature Mint) */}
+                        <div className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#7FFFD4]/50 to-transparent shadow-[0_0_15px_rgba(127,255,212,0.2)]" />
+                        
                         <div className="space-y-4 text-center lg:text-left px-6">
                             <h3 className="text-white text-3xl md:text-5xl font-black tracking-tight uppercase">Technical Stack</h3>
                             <p className="text-white/30 text-xs md:text-sm max-w-md uppercase tracking-[0.2em] font-bold">The tools and technologies driving my engineering process.</p>

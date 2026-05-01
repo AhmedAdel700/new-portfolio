@@ -2,7 +2,45 @@
 
 import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Link, CheckCircle2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle2 } from 'lucide-react';
+
+const FacebookIcon = ({ className }: { className?: string }) => (
+    <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        width="24" 
+        height="24" 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="currentColor" 
+        strokeWidth="2" 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+        className={className}
+    >
+        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+    </svg>
+);
+
+const LinkedInIcon = ({ className }: { className?: string }) => (
+    <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        width="24" 
+        height="24" 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="currentColor" 
+        strokeWidth="2" 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+        className={className}
+    >
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+        <rect width="4" height="12" x="2" y="9"/>
+        <circle cx="4" cy="4" r="2"/>
+    </svg>
+);
+
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 
@@ -10,15 +48,65 @@ const PlasmaWave = dynamic(() => import('./PlasmaWave'), { ssr: false });
 
 export default function Contact() {
     const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+    });
+    const [errors, setErrors] = useState<{ [key: string]: boolean }>({});
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const validate = () => {
+        const newErrors: { [key: string]: boolean } = {};
+        if (!formData.name.trim()) newErrors.name = true;
+        if (!formData.email.trim()) newErrors.email = true;
+        if (!formData.subject.trim()) newErrors.subject = true;
+        if (!formData.message.trim()) newErrors.message = true;
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
+    const handleInputChange = (field: string, value: string) => {
+        setFormData({ ...formData, [field]: value });
+        if (errors[field]) {
+            setErrors({ ...errors, [field]: false });
+        }
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        
+        if (!validate()) return;
+        
         setFormStatus('submitting');
-        // Simulate network request
-        setTimeout(() => {
-            setFormStatus('success');
-            setTimeout(() => setFormStatus('idle'), 3000);
-        }, 1500);
+        
+        try {
+            const response = await fetch(process.env.NEXT_PUBLIC_FORMSPREE_KEY || '', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                setFormStatus('success');
+                setFormData({
+                    name: '',
+                    email: '',
+                    subject: '',
+                    message: ''
+                });
+                setErrors({});
+                setTimeout(() => setFormStatus('idle'), 3000);
+            } else {
+                throw new Error('Failed to send message');
+            }
+        } catch (error) {
+            console.error(error);
+            alert("Failed To Send Message. Please Try Again Later.");
+            setFormStatus('idle');
+        }
     };
 
     return (
@@ -65,7 +153,7 @@ export default function Contact() {
                         className="text-7xl lg:text-9xl font-black text-white tracking-tight mb-8 leading-[0.9] uppercase"
                     >
                         GOT A PROJECT<br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7FFFD4] to-emerald-400">IN MIND?</span>
+                        <span className="text-[#7FFFD4]">IN MIND?</span>
                     </motion.h2>
                     
                     <motion.p 
@@ -98,23 +186,23 @@ export default function Contact() {
                             <h3 className="text-2xl font-semibold text-white mb-10 relative z-10">Contact Information</h3>
                             
                             <div className="space-y-8 relative z-10">
-                                <a href="mailto:hello@example.com" className="flex items-center gap-6 group/item">
+                                <a href="mailto:ahmedadel.engineer1@gmail.com" className="flex items-center gap-6 group/item">
                                     <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 group-hover/item:bg-[#7FFFD4]/10 group-hover/item:border-[#7FFFD4]/30 group-hover/item:text-[#7FFFD4] text-white/70 transition-all duration-300 shrink-0 shadow-lg">
                                         <Mail className="w-6 h-6" />
                                     </div>
                                     <div>
                                         <p className="text-white/40 text-sm mb-1 uppercase tracking-wider font-medium">Email</p>
-                                        <p className="text-white text-lg group-hover/item:text-[#7FFFD4] font-medium transition-colors">hello@example.com</p>
+                                        <p className="text-white text-lg group-hover/item:text-[#7FFFD4] font-medium transition-colors">ahmedadel.engineer1@gmail.com</p>
                                     </div>
                                 </a>
                                 
-                                <a href="tel:+201234567890" className="flex items-center gap-6 group/item">
+                                <a href="tel:+2001283910247" className="flex items-center gap-6 group/item">
                                     <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 group-hover/item:bg-[#7FFFD4]/10 group-hover/item:border-[#7FFFD4]/30 group-hover/item:text-[#7FFFD4] text-white/70 transition-all duration-300 shrink-0 shadow-lg">
                                         <Phone className="w-6 h-6" />
                                     </div>
                                     <div>
                                         <p className="text-white/40 text-sm mb-1 uppercase tracking-wider font-medium">Phone</p>
-                                        <p className="text-white text-lg group-hover/item:text-[#7FFFD4] font-medium transition-colors">+20 123 456 7890</p>
+                                        <p className="text-white text-lg group-hover/item:text-[#7FFFD4] font-medium transition-colors">+20 128 391 0247</p>
                                     </div>
                                 </a>
 
@@ -130,25 +218,60 @@ export default function Contact() {
                             </div>
                         </div>
 
-                        {/* Social Links Card */}
+                        {/* Digital Presence Card */}
                         <div className="bg-white/[0.02] border border-white/10 rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-10 backdrop-blur-xl hover:bg-white/[0.04] transition-colors duration-500">
-                            <h3 className="text-xl font-semibold text-white mb-8">Follow Me</h3>
+                            <h3 className="text-xl font-semibold text-white mb-8 uppercase tracking-widest text-sm opacity-70">Digital Presence</h3>
                             <div className="flex flex-wrap gap-4">
                                 {[
-                                    { icon: Link, label: 'GitHub', href: '#' },
-                                    { icon: Link, label: 'Twitter', href: '#' },
-                                    { icon: Link, label: 'LinkedIn', href: '#' },
-                                    { icon: Link, label: 'Instagram', href: '#' }
-                                ].map((social, i) => (
-                                    <a 
-                                        key={i} 
-                                        href={social.href} 
-                                        aria-label={social.label} 
-                                        className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 hover:bg-[#7FFFD4] hover:border-[#7FFFD4] hover:text-black text-white/70 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_20px_-10px_rgba(127,255,212,0.4)]"
-                                    >
-                                        <social.icon className="w-6 h-6" />
-                                    </a>
-                                ))}
+                                    { 
+                                        type: 'icon',
+                                        icon: LinkedInIcon, 
+                                        label: 'LinkedIn', 
+                                        href: 'https://www.linkedin.com/in/ahmed-adel-232272283'
+                                    },
+                                    { 
+                                        type: 'icon',
+                                        icon: FacebookIcon, 
+                                        label: 'Facebook', 
+                                        href: 'https://www.facebook.com/ahmed.adel.804171?rdid=o8m9JtSE3PC9XZR1&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1Hb9xJefuP%2F#'
+                                    },
+                                    { 
+                                        type: 'image',
+                                        image: '/assets/github-logo.png', 
+                                        label: 'GitHub', 
+                                        href: 'https://github.com/AhmedAdel700' 
+                                    },
+                                    { 
+                                        type: 'image',
+                                        image: '/assets/whatsapp.png', 
+                                        label: 'WhatsApp', 
+                                        href: 'https://wa.me/201283910247' 
+                                    }
+                                ].map((social, i) => {
+                                    const IconComponent = social.type === 'icon' ? social.icon : null;
+                                    return (
+                                        <a 
+                                            key={i} 
+                                            href={social.href} 
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            aria-label={social.label} 
+                                            className="w-10 h-10 flex items-center justify-center text-white/70 hover:text-white transition-all duration-300 hover:-translate-y-1"
+                                        >
+                                            {social.type === 'icon' && IconComponent ? (
+                                                <IconComponent className="w-8 h-8" />
+                                            ) : social.type === 'image' && 'image' in social ? (
+                                                <Image 
+                                                    src={social.image as string} 
+                                                    alt={social.label} 
+                                                    width={32} 
+                                                    height={32} 
+                                                    className="w-8 h-8 object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-all"
+                                                />
+                                            ) : null}
+                                        </a>
+                                    );
+                                })}
                             </div>
                         </div>
                         </motion.div>
@@ -162,59 +285,79 @@ export default function Contact() {
                         className="lg:col-span-7"
                     >
                         <div className="bg-white/[0.02] border border-white/10 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-12 backdrop-blur-xl relative overflow-hidden shadow-2xl">
-                            {/* Decorative top gradient line */}
-                            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#7FFFD4]/50 to-transparent opacity-50" />
+                            {/* Top Horizontal Separator (Signature Mint) */}
+                            <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#7FFFD4]/50 to-transparent shadow-[0_0_15px_rgba(127,255,212,0.2)]" />
                             
                             <div className="mb-10">
-                                <h3 className="text-3xl font-semibold text-white mb-2">Send a Message</h3>
-                                <p className="text-white/40">Fill out the form below and I'll get back to you shortly.</p>
+                                <h3 className="text-3xl font-semibold text-white mb-2 uppercase tracking-tight">Get <span className="text-[#7FFFD4]">In</span> Touch</h3>
+                                <p className="text-white/30 text-sm tracking-wide">Ready to build something extraordinary? Drop a line and I'll get back to you within 24 hours.</p>
                             </div>
                             
                             <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div className="space-y-2 group">
-                                        <label className="text-white/60 text-[10px] uppercase tracking-wider font-bold ml-1 transition-colors group-focus-within:text-[#7FFFD4]">Name</label>
+                                        <label className={`flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] font-bold ml-1 transition-colors ${errors.name ? 'text-red-400' : 'text-white/40 group-focus-within:text-[#7FFFD4]'}`}>
+                                            <span className={`w-1.5 h-1.5 rounded-full transition-colors ${errors.name ? 'bg-red-400' : 'bg-[#7FFFD4]/20 group-focus-within:bg-[#7FFFD4]'}`} />
+                                            Name
+                                            {errors.name && <span className="ml-auto text-[8px] font-black tracking-widest text-red-400/50">REQUIRED</span>}
+                                        </label>
                                         <input 
                                             type="text" 
-                                            required
+                                            value={formData.name}
+                                            onChange={(e) => handleInputChange('name', e.target.value)}
                                             suppressHydrationWarning
-                                            placeholder="John Doe" 
-                                            className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:ring-1 focus:ring-[#7FFFD4]/50 focus:border-[#7FFFD4]/50 transition-all focus:bg-white/[0.08]"
+                                            placeholder="Your name..." 
+                                            className={`w-full bg-white/[0.03] border rounded-xl px-6 py-4 text-white text-[15px] placeholder:text-white/25 focus:outline-none focus:ring-1 transition-all focus:bg-white/[0.05] ${errors.name ? 'border-red-500/50 focus:ring-red-500/30 focus:border-red-500/50' : 'border-white/10 focus:ring-[#7FFFD4]/30 focus:border-[#7FFFD4]/30'}`}
                                         />
                                     </div>
                                     <div className="space-y-2 group">
-                                        <label className="text-white/60 text-[10px] uppercase tracking-wider font-bold ml-1 transition-colors group-focus-within:text-[#7FFFD4]">Subject</label>
+                                        <label className={`flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] font-bold ml-1 transition-colors ${errors.subject ? 'text-red-400' : 'text-white/40 group-focus-within:text-[#7FFFD4]'}`}>
+                                            <span className={`w-1.5 h-1.5 rounded-full transition-colors ${errors.subject ? 'bg-red-400' : 'bg-[#7FFFD4]/20 group-focus-within:bg-[#7FFFD4]'}`} />
+                                            Subject
+                                            {errors.subject && <span className="ml-auto text-[8px] font-black tracking-widest text-red-400/50">REQUIRED</span>}
+                                        </label>
                                         <input 
                                             type="text" 
-                                            required
+                                            value={formData.subject}
+                                            onChange={(e) => handleInputChange('subject', e.target.value)}
                                             suppressHydrationWarning
-                                            placeholder="Project Inquiry" 
-                                            className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:ring-1 focus:ring-[#7FFFD4]/50 focus:border-[#7FFFD4]/50 transition-all focus:bg-white/[0.08]"
+                                            placeholder="What's this about?" 
+                                            className={`w-full bg-white/[0.03] border rounded-xl px-6 py-4 text-white text-[15px] placeholder:text-white/25 focus:outline-none focus:ring-1 transition-all focus:bg-white/[0.05] ${errors.subject ? 'border-red-500/50 focus:ring-red-500/30 focus:border-red-500/50' : 'border-white/10 focus:ring-[#7FFFD4]/30 focus:border-[#7FFFD4]/30'}`}
                                         />
                                     </div>
                                 </div>
-
-                                <div className="space-y-2 group">
-                                    <label className="text-white/60 text-[10px] uppercase tracking-wider font-bold ml-1 transition-colors group-focus-within:text-[#7FFFD4]">Email Address</label>
-                                    <input 
-                                        type="email" 
-                                        required
-                                        suppressHydrationWarning
-                                        placeholder="john@example.com" 
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:ring-1 focus:ring-[#7FFFD4]/50 focus:border-[#7FFFD4]/50 transition-all focus:bg-white/[0.08]"
-                                    />
-                                </div>
-
-                                <div className="space-y-2 group">
-                                    <label className="text-white/60 text-[10px] uppercase tracking-wider font-bold ml-1 transition-colors group-focus-within:text-[#7FFFD4]">Message</label>
-                                    <textarea 
-                                        required
-                                        suppressHydrationWarning
-                                        rows={5} 
-                                        placeholder="Tell me about your project..." 
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:ring-1 focus:ring-[#7FFFD4]/50 focus:border-[#7FFFD4]/50 transition-all resize-none focus:bg-white/[0.08]"
-                                    />
-                                </div>
+ 
+                                 <div className="space-y-2 group">
+                                     <label className={`flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] font-bold ml-1 transition-colors ${errors.email ? 'text-red-400' : 'text-white/40 group-focus-within:text-[#7FFFD4]'}`}>
+                                         <span className={`w-1.5 h-1.5 rounded-full transition-colors ${errors.email ? 'bg-red-400' : 'bg-[#7FFFD4]/20 group-focus-within:bg-[#7FFFD4]'}`} />
+                                         Email Address
+                                         {errors.email && <span className="ml-auto text-[8px] font-black tracking-widest text-red-400/50">REQUIRED</span>}
+                                     </label>
+                                     <input 
+                                         type="email" 
+                                         value={formData.email}
+                                         onChange={(e) => handleInputChange('email', e.target.value)}
+                                         suppressHydrationWarning
+                                         placeholder="your@email.com" 
+                                         className={`w-full bg-white/[0.03] border rounded-xl px-6 py-4 text-white text-[15px] placeholder:text-white/25 focus:outline-none focus:ring-1 transition-all focus:bg-white/[0.05] ${errors.email ? 'border-red-500/50 focus:ring-red-500/30 focus:border-red-500/50' : 'border-white/10 focus:ring-[#7FFFD4]/30 focus:border-[#7FFFD4]/30'}`}
+                                     />
+                                 </div>
+ 
+                                 <div className="space-y-2 group">
+                                     <label className={`flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] font-bold ml-1 transition-colors ${errors.message ? 'text-red-400' : 'text-white/40 group-focus-within:text-[#7FFFD4]'}`}>
+                                         <span className={`w-1.5 h-1.5 rounded-full transition-colors ${errors.message ? 'bg-red-400' : 'bg-[#7FFFD4]/20 group-focus-within:bg-[#7FFFD4]'}`} />
+                                         Message
+                                         {errors.message && <span className="ml-auto text-[8px] font-black tracking-widest text-red-400/50">REQUIRED</span>}
+                                     </label>
+                                     <textarea 
+                                         value={formData.message}
+                                         onChange={(e) => handleInputChange('message', e.target.value)}
+                                         suppressHydrationWarning
+                                         rows={5} 
+                                         placeholder="Tell me about your vision..." 
+                                         className={`w-full bg-white/[0.03] border rounded-xl px-6 py-4 text-white text-[15px] placeholder:text-white/25 focus:outline-none focus:ring-1 transition-all resize-none focus:bg-white/[0.05] ${errors.message ? 'border-red-500/50 focus:ring-red-500/30 focus:border-red-500/50' : 'border-white/10 focus:ring-[#7FFFD4]/30 focus:border-[#7FFFD4]/30'}`}
+                                     />
+                                 </div>
 
                                 <button 
                                     type="submit" 

@@ -12,6 +12,13 @@ import PlasmaWave from './PlasmaWave';
 
 export default function Hero() {
     const screen = useScreenSize();
+    const scrollToContact = () => {
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
         <section className="relative w-full min-h-screen bg-[#030014] flex flex-col items-center overflow-hidden font-sans">
             {/* Laser Background - Fixed props as requested */}
@@ -139,7 +146,7 @@ export default function Hero() {
                                         style={{ clipPath: 'url(#user-blob)' }}
                                     >
                                         <Image
-                                            src="/AA.jpeg"
+                                            src="/assets/AA.jpeg"
                                             alt="Ahmed Adel"
                                             fill
                                             className="object-cover object-right p-10"
@@ -165,7 +172,10 @@ export default function Hero() {
                                 </p>
 
                                 <div className="flex w-full md:w-auto gap-3 md:gap-4 items-center">
-                                    <button className="flex-1 md:flex-none group relative px-4 py-3 md:px-8 md:py-4 lg:px-10 lg:py-4 bg-[#7FFFD4] text-[#030014] text-xs md:text-sm lg:text-base font-bold rounded-xl md:rounded-2xl transition-all shadow-[0_0_20px_rgba(127,255,212,0.2)] hover:shadow-[0_0_40px_rgba(127,255,212,0.4)] active:scale-95 cursor-pointer">
+                                    <button 
+                                        onClick={scrollToContact}
+                                        className="flex-1 md:flex-none group relative px-4 py-3 md:px-8 md:py-4 lg:px-10 lg:py-4 bg-[#7FFFD4] text-[#030014] text-xs md:text-sm lg:text-base font-bold rounded-xl md:rounded-2xl transition-all shadow-[0_0_20px_rgba(127,255,212,0.2)] hover:shadow-[0_0_40px_rgba(127,255,212,0.4)] active:scale-95 cursor-pointer"
+                                    >
                                         <span>Work with me</span>
                                     </button>
 

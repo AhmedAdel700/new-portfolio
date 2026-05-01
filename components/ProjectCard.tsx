@@ -44,6 +44,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                             <div className="absolute top-5 right-5 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0">
                                 <Link
                                     href={project.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="w-12 h-12 rounded-full bg-white text-[#030014] flex items-center justify-center hover:bg-[#7FFFD4] transition-colors shadow-2xl"
                                 >
                                     <ArrowUpRight className="w-6 h-6" />
@@ -69,8 +71,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                     {/* Bottom Section: Skills - Pushed to Bottom */}
                     <div className="px-6 pb-6 pt-10 mt-auto">
                         <div className="flex flex-wrap gap-4 pt-8 border-t border-white/5">
-                            {project.skills.map(skill => (
-                                <span key={skill} className="text-white/20 text-[9px] font-black uppercase tracking-[0.3em] group-hover:text-white/40 transition-colors">
+                            {project.skills.map((skill, idx) => (
+                                <span key={`${skill}-${idx}`} className="text-white/20 text-[9px] font-black uppercase tracking-[0.3em] group-hover:text-white/40 transition-colors">
                                     {skill}
                                 </span>
                             ))}
