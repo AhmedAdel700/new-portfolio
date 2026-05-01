@@ -46,9 +46,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                                     href={project.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    aria-label={`View ${project.title} project`}
                                     className="w-12 h-12 rounded-full bg-white text-[#030014] flex items-center justify-center hover:bg-[#7FFFD4] transition-colors shadow-2xl"
                                 >
-                                    <ArrowUpRight className="w-6 h-6" />
+                                    <ArrowUpRight aria-hidden="true" className="w-6 h-6" />
                                 </Link>
                             </div>
 

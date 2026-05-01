@@ -296,12 +296,13 @@ export default function Contact() {
                             <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div className="space-y-2 group">
-                                        <label className={`flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] font-bold ml-1 transition-colors ${errors.name ? 'text-red-400' : 'text-white/40 group-focus-within:text-[#7FFFD4]'}`}>
+                                        <label htmlFor="name" className={`flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] font-bold ml-1 transition-colors ${errors.name ? 'text-red-400' : 'text-white/40 group-focus-within:text-[#7FFFD4]'}`}>
                                             <span className={`w-1.5 h-1.5 rounded-full transition-colors ${errors.name ? 'bg-red-400' : 'bg-[#7FFFD4]/20 group-focus-within:bg-[#7FFFD4]'}`} />
                                             Name
                                             {errors.name && <span className="ml-auto text-[8px] font-black tracking-widest text-red-400/50">REQUIRED</span>}
                                         </label>
                                         <input 
+                                            id="name"
                                             type="text" 
                                             value={formData.name}
                                             onChange={(e) => handleInputChange('name', e.target.value)}
@@ -311,12 +312,13 @@ export default function Contact() {
                                         />
                                     </div>
                                     <div className="space-y-2 group">
-                                        <label className={`flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] font-bold ml-1 transition-colors ${errors.subject ? 'text-red-400' : 'text-white/40 group-focus-within:text-[#7FFFD4]'}`}>
+                                        <label htmlFor="subject" className={`flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] font-bold ml-1 transition-colors ${errors.subject ? 'text-red-400' : 'text-white/40 group-focus-within:text-[#7FFFD4]'}`}>
                                             <span className={`w-1.5 h-1.5 rounded-full transition-colors ${errors.subject ? 'bg-red-400' : 'bg-[#7FFFD4]/20 group-focus-within:bg-[#7FFFD4]'}`} />
                                             Subject
                                             {errors.subject && <span className="ml-auto text-[8px] font-black tracking-widest text-red-400/50">REQUIRED</span>}
                                         </label>
                                         <input 
+                                            id="subject"
                                             type="text" 
                                             value={formData.subject}
                                             onChange={(e) => handleInputChange('subject', e.target.value)}
@@ -328,12 +330,13 @@ export default function Contact() {
                                 </div>
  
                                  <div className="space-y-2 group">
-                                     <label className={`flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] font-bold ml-1 transition-colors ${errors.email ? 'text-red-400' : 'text-white/40 group-focus-within:text-[#7FFFD4]'}`}>
+                                     <label htmlFor="email" className={`flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] font-bold ml-1 transition-colors ${errors.email ? 'text-red-400' : 'text-white/40 group-focus-within:text-[#7FFFD4]'}`}>
                                          <span className={`w-1.5 h-1.5 rounded-full transition-colors ${errors.email ? 'bg-red-400' : 'bg-[#7FFFD4]/20 group-focus-within:bg-[#7FFFD4]'}`} />
                                          Email Address
                                          {errors.email && <span className="ml-auto text-[8px] font-black tracking-widest text-red-400/50">REQUIRED</span>}
                                      </label>
                                      <input 
+                                         id="email"
                                          type="email" 
                                          value={formData.email}
                                          onChange={(e) => handleInputChange('email', e.target.value)}
@@ -344,12 +347,13 @@ export default function Contact() {
                                  </div>
  
                                  <div className="space-y-2 group">
-                                     <label className={`flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] font-bold ml-1 transition-colors ${errors.message ? 'text-red-400' : 'text-white/40 group-focus-within:text-[#7FFFD4]'}`}>
+                                     <label htmlFor="message" className={`flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] font-bold ml-1 transition-colors ${errors.message ? 'text-red-400' : 'text-white/40 group-focus-within:text-[#7FFFD4]'}`}>
                                          <span className={`w-1.5 h-1.5 rounded-full transition-colors ${errors.message ? 'bg-red-400' : 'bg-[#7FFFD4]/20 group-focus-within:bg-[#7FFFD4]'}`} />
                                          Message
                                          {errors.message && <span className="ml-auto text-[8px] font-black tracking-widest text-red-400/50">REQUIRED</span>}
                                      </label>
                                      <textarea 
+                                         id="message"
                                          value={formData.message}
                                          onChange={(e) => handleInputChange('message', e.target.value)}
                                          suppressHydrationWarning
@@ -361,6 +365,7 @@ export default function Contact() {
 
                                 <button 
                                     type="submit" 
+                                    aria-label="Send Message"
                                     disabled={formStatus !== 'idle'}
                                     suppressHydrationWarning
                                     className={`w-full relative group px-8 py-4 rounded-xl font-bold tracking-wide transition-all duration-300 active:scale-[0.98] cursor-pointer mt-4 overflow-hidden

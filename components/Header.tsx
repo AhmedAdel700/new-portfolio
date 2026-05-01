@@ -146,7 +146,7 @@ export default function Header() {
                 )}
             </AnimatePresence>
 
-            <nav className={`
+            <nav aria-label="Main Navigation" className={`
                 relative w-full transition-all duration-700 pointer-events-auto flex items-center justify-between z-[210]
                 ${isMenuOpen
                     ? 'bg-[#030014] border-b border-white/10 px-6 py-6 md:px-10 md:py-8'
@@ -171,6 +171,7 @@ export default function Header() {
                             <Link
                                 key={link.name}
                                 href={link.href}
+                                aria-current={isActive ? 'page' : undefined}
                                 className={`
                                     relative px-6 py-2.5 rounded-full text-[11px] font-bold tracking-[0.15em] uppercase transition-all duration-500
                                     ${isActive
@@ -190,10 +191,12 @@ export default function Header() {
 
                 {/* Mobile Menu Toggle */}
                 <button
+                    aria-label="Toggle Navigation Menu"
+                    aria-expanded={isMenuOpen}
                     className="lg:hidden text-white/70 hover:text-[#7FFFD4] transition-colors p-2"
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                 >
-                    {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                    {isMenuOpen ? <X aria-hidden="true" className="w-6 h-6" /> : <Menu aria-hidden="true" className="w-6 h-6" />}
                 </button>
             </nav>
         </header>

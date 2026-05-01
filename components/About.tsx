@@ -14,6 +14,45 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 
 const ColorBends = dynamic(() => import('./ColorBends'), { ssr: false });
+import Image from 'next/image';
+
+const FacebookIcon = ({ className, "aria-hidden": ariaHidden }: { className?: string, "aria-hidden"?: boolean | "true" | "false" }) => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={className}
+        aria-hidden={ariaHidden}
+    >
+        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+    </svg>
+);
+
+const LinkedInIcon = ({ className, "aria-hidden": ariaHidden }: { className?: string, "aria-hidden"?: boolean | "true" | "false" }) => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={className}
+        aria-hidden={ariaHidden}
+    >
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+        <rect width="4" height="12" x="2" y="9" />
+        <circle cx="4" cy="4" r="2" />
+    </svg>
+);
 
 export default function About() {
     const technicalPillars = [
@@ -44,7 +83,7 @@ export default function About() {
     ];
 
     return (
-        <section id="about" className="relative w-full py-10 md:py-20 bg-[#030014] overflow-hidden selection:bg-[#7FFFD4] selection:text-black">
+        <section id="about" aria-label="About Section" className="relative w-full py-10 md:py-20 bg-[#030014] overflow-hidden selection:bg-[#7FFFD4] selection:text-black">
 
             {/* Ambient Background ColorBends */}
             <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
@@ -75,7 +114,7 @@ export default function About() {
             >
 
                 {/* 1. High-Impact Intro Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-12 lg:gap-x-20 mb-10 lg:mb-20 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-12 lg:gap-x-20 items-start">
 
                     {/* Left: Identity (Col 1-7) */}
                     <motion.div
@@ -90,21 +129,55 @@ export default function About() {
                             Ahmed Adel / Identity
                         </div>
 
-                        <h2 className="text-white text-7xl lg:text-8xl 2xl:text-9xl font-black tracking-tighter leading-[0.95] lg:leading-[0.85] uppercase">
+                        <h2 className="text-white text-7xl lg:text-9xl font-black tracking-tighter leading-[0.95] lg:leading-[0.85] uppercase">
                             CREATIVE <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7FFFD4] to-emerald-400">PIONEER</span>
                         </h2>
 
-                        <div className="flex justify-center lg:justify-start gap-16 pt-8">
-                            <div className="space-y-2">
-                                <p className="text-[#7FFFD4] text-5xl md:text-6xl font-black tracking-tighter">3+</p>
-                                <p className="text-white/30 text-[13px] font-black tracking-[0.2em] uppercase">Years Exp</p>
+
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.6 }}
+                            className="flex flex-col items-center lg:items-start gap-6"
+                        >
+                            <span className="text-white/30 text-xs font-black uppercase tracking-[0.5em]">Digital Presence</span>
+                            <div className="flex items-center gap-8">
+                                {[
+                                    { type: 'icon', icon: LinkedInIcon, href: 'https://www.linkedin.com/in/ahmed-adel-232272283', label: 'LinkedIn' },
+                                    { type: 'icon', icon: FacebookIcon, href: 'https://www.facebook.com/ahmed.adel.804171?rdid=o8m9JtSE3PC9XZR1&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1Hb9xJefuP%2F#', label: 'Facebook' },
+                                    { type: 'image', image: '/assets/github-logo.png', href: 'https://github.com/AhmedAdel700', label: 'GitHub' },
+                                    { type: 'image', image: '/assets/whatsapp.png', href: 'https://wa.me/201283910247', label: 'WhatsApp' }
+                                ].map((social, i) => {
+                                    const IconComp = social.type === 'icon' ? social.icon : null;
+                                    return (
+                                        <a
+                                            key={i}
+                                            href={social.href}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            aria-label={social.label}
+                                            className="group/social transition-all duration-300 hover:-translate-y-1.5"
+                                        >
+                                            {social.type === 'icon' && IconComp ? (
+                                                <IconComp className="w-7 h-7 text-white/30 group-hover/social:text-[#7FFFD4] transition-colors" aria-hidden="true" />
+                                            ) : social.type === 'image' && 'image' in social ? (
+                                                <Image
+                                                    src={social.image as string}
+                                                    alt=""
+                                                    aria-hidden="true"
+                                                    width={28}
+                                                    height={28}
+                                                    className="w-7 h-7 object-contain brightness-0 invert opacity-30 group-hover/social:opacity-100 transition-all"
+                                                />
+                                            ) : null}
+                                        </a>
+                                    );
+                                })}
                             </div>
-                            <div className="space-y-2">
-                                <p className="text-white text-5xl md:text-6xl font-black tracking-tighter">24/7</p>
-                                <p className="text-white/30 text-[13px] font-black tracking-[0.2em] uppercase">Passion</p>
-                            </div>
-                        </div>
+                        </motion.div>
                     </motion.div>
 
                     {/* Right: Narrative Bio (Col 8-12) */}
@@ -113,7 +186,7 @@ export default function About() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        className="col-span-1 lg:col-span-5 space-y-10 pt-4 lg:pt-16"
+                        className="col-span-1 lg:col-span-5 space-y-8"
                     >
                         <div className="space-y-8">
                             <p className="text-white/80 text-xl md:text-2xl leading-relaxed font-light text-center lg:text-left">
@@ -123,20 +196,32 @@ export default function About() {
                                 Mastering the synergy of React and Next.js, I architect resilient digital infrastructures that balance sophisticated engineering with refined, human-centric interactions.
                             </p>
                         </div>
- 
-                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 pt-16 relative">
-                             {/* Top Horizontal Separator (Signature Mint) */}
-                             <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#7FFFD4]/50 to-transparent shadow-[0_0_15px_rgba(127,255,212,0.2)]" />
-                             
-                             <div className="space-y-4 text-center lg:text-left">
-                                 <h4 className="text-[#7FFFD4] font-black text-xs uppercase tracking-[0.3em]">Strategic Synergy</h4>
-                                 <p className="text-white/40 text-[13px] md:text-sm leading-relaxed font-medium">Translating complex technical roadmaps into clear, collaborative narratives to drive seamless cross-functional alignment.</p>
-                             </div>
-                             <div className="space-y-4 text-center lg:text-left">
-                                 <h4 className="text-[#7FFFD4] font-black text-xs uppercase tracking-[0.3em]">Architectural Logic</h4>
-                                 <p className="text-white/40 text-[13px] md:text-sm leading-relaxed font-medium">Deconstructing intricate system bottlenecks with surgical precision and scalable engineering solutions.</p>
-                             </div>
-                         </div>
+
+                        {/* Experience Badges - Balanced Location */}
+                        <div className="grid grid-cols-2 gap-4 w-full">
+                            <div className="flex items-center justify-center gap-3 px-5 py-3 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-md group/stat transition-all duration-300 hover:border-[#7FFFD4]/30 hover:bg-white/[0.05]">
+                                <span className="text-[#7FFFD4] text-lg font-black tracking-tighter">3+</span>
+                                <span className="text-white/40 text-[10px] font-black uppercase tracking-widest">Years Exp</span>
+                            </div>
+                            <div className="flex items-center justify-center gap-3 px-5 py-3 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-md group/stat transition-all duration-300 hover:border-[#7FFFD4]/30 hover:bg-white/[0.05]">
+                                <span className="text-white text-lg font-black tracking-tighter">24/7</span>
+                                <span className="text-white/40 text-[10px] font-black uppercase tracking-widest">Passion</span>
+                            </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 pt-8 relative">
+                            {/* Top Horizontal Separator (Signature Mint) */}
+                            <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#7FFFD4]/50 to-transparent shadow-[0_0_15px_rgba(127,255,212,0.2)]" />
+
+                            <div className="space-y-4 text-center lg:text-left">
+                                <h4 className="text-[#7FFFD4] font-black text-xs uppercase tracking-[0.3em]">Strategic Synergy</h4>
+                                <p className="text-white/40 text-[13px] md:text-sm leading-relaxed font-medium">Translating complex technical roadmaps into clear, collaborative narratives to drive seamless cross-functional alignment.</p>
+                            </div>
+                            <div className="space-y-4 text-center lg:text-left">
+                                <h4 className="text-[#7FFFD4] font-black text-xs uppercase tracking-[0.3em]">Architectural Logic</h4>
+                                <p className="text-white/40 text-[13px] md:text-sm leading-relaxed font-medium">Deconstructing intricate system bottlenecks with surgical precision and scalable engineering solutions.</p>
+                            </div>
+                        </div>
                     </motion.div>
                 </div>
 
@@ -148,17 +233,21 @@ export default function About() {
                     transition={{ duration: 0.8 }}
                     className="overflow-hidden"
                 >
-                    <div className="relative flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12">
+                    <div className="relative flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10">
                         {/* Bottom Horizontal Separator (Signature Mint) */}
                         <div className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#7FFFD4]/50 to-transparent shadow-[0_0_15px_rgba(127,255,212,0.2)]" />
-                        
-                        <div className="space-y-4 text-center lg:text-left px-6">
+
+                        <div className="space-y-4 text-center lg:text-left">
                             <h3 className="text-white text-3xl md:text-5xl font-black tracking-tight uppercase">Technical Stack</h3>
                             <p className="text-white/30 text-xs md:text-sm max-w-md uppercase tracking-[0.2em] font-bold">The tools and technologies driving my engineering process.</p>
                         </div>
                     </div>
 
-                    <div className="relative flex flex-col gap-6 py-10 swiper-marquee">
+                    <div className="sr-only">
+                        Technologies: React.Js, Next.Js, TypeScript, JavaScript, Tailwind CSS, Node.Js, FastAPI, Redux Toolkit, Framer Motion, SCSS, HTML, CSS, Next-Intl, C++, Python, ShadCN, Figma, Git, Agile, REST APIs, GSAP, GitHub, GitLab, MUI, Vercel, AntDesign, Bootstrap.
+                    </div>
+
+                    <div className="relative flex flex-col gap-6 py-10 swiper-marquee" aria-hidden="true">
                         {/* First Row: Moving Left */}
                         <Swiper
                             modules={[Autoplay]}
@@ -178,7 +267,7 @@ export default function About() {
                             {[
                                 "React.Js", "Next.Js", "TypeScript", "JavaScript",
                                 "Tailwind CSS", "Node.Js", "FastAPI", "Redux Toolkit",
-                                "Framer Motion", "SCSS", "HTML", "CSS", "Next-Intl", "C++" , "Python",
+                                "Framer Motion", "SCSS", "HTML", "CSS", "Next-Intl", "C++", "Python",
                                 "React.Js", "Next.Js", "TypeScript", "JavaScript",
                                 "Tailwind CSS", "Node.Js", "FastAPI", "Redux Toolkit",
                                 "Framer Motion", "SCSS", "HTML", "CSS", "Next-Intl", "C++", "Python",

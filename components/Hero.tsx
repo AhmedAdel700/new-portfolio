@@ -20,7 +20,7 @@ export default function Hero() {
     };
 
     return (
-        <section className="relative w-full min-h-screen bg-[#030014] flex flex-col items-center overflow-hidden font-sans">
+        <section aria-label="Hero Section" className="relative w-full min-h-screen bg-[#030014] flex flex-col items-center overflow-hidden font-sans">
             {/* Laser Background - Fixed props as requested */}
             <div className="absolute inset-0 z-0">
                 <LaserFlow
@@ -63,7 +63,7 @@ export default function Hero() {
                     </div>
 
                     {/* Modern Fading Border UI */}
-                    <div className="absolute inset-0 rounded-3xl border-t-2 border-x-2 border-white/[0.15] [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)] pointer-events-none transition-colors group-hover/card:border-[#7FFFD4]/30 duration-700" />
+                    <div className="absolute inset-0 rounded-3xl border-t-2 border-x-2 border-[#7FFFD4]/30 [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)] pointer-events-none transition-colors group-hover/card:border-[#7FFFD4]/50 duration-700" />
                     <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#7FFFD4]/05 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-1000 pointer-events-none" />
                     <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#7FFFD4]/40 to-transparent opacity-50" />
 
@@ -123,7 +123,7 @@ export default function Hero() {
                             <div className="relative w-80 h-80 md:w-[380px] md:h-[380px] lg:w-[440px] lg:h-[440px] 2xl:w-[500px] 2xl:h-[500px]">
 
                                 {/* Hidden SVG Definition for the Normalized User Path */}
-                                <svg width="0" height="0" className="absolute">
+                                <svg aria-hidden="true" width="0" height="0" className="absolute">
                                     <defs>
                                         <clipPath id="user-blob" clipPathUnits="objectBoundingBox">
                                             <path d="M0.6405,0.3645 C0.7215,0.44,0.8535,0.47,0.854,0.5005 C0.855,0.531,0.724,0.562,0.643,0.618 C0.562,0.674,0.531,0.7545,0.4815,0.773 C0.4325,0.791,0.365,0.747,0.2825,0.691 C0.1995,0.635,0.102,0.5675,0.0975,0.496 C0.0935,0.424,0.1825,0.348,0.2655,0.2725 C0.348,0.1965,0.424,0.121,0.477,0.144 C0.53,0.167,0.56,0.289,0.6405,0.3645 Z" />
@@ -174,15 +174,16 @@ export default function Hero() {
                                 <div className="flex w-full md:w-auto gap-3 md:gap-4 items-center">
                                     <button 
                                         onClick={scrollToContact}
+                                        aria-label="Scroll to contact section"
                                         className="flex-1 md:flex-none group relative px-4 py-3 md:px-8 md:py-4 lg:px-10 lg:py-4 bg-[#7FFFD4] text-[#030014] text-xs md:text-sm lg:text-base font-bold rounded-xl md:rounded-2xl transition-all shadow-[0_0_20px_rgba(127,255,212,0.2)] hover:shadow-[0_0_40px_rgba(127,255,212,0.4)] active:scale-95 cursor-pointer"
                                     >
                                         <span>Work with me</span>
                                     </button>
 
-                                    <button className="flex-1 md:flex-none group relative px-4 py-3 md:px-7 md:py-4 lg:px-8 lg:py-4 bg-white/5 border border-white/10 text-white text-xs md:text-sm lg:text-base font-bold rounded-xl md:rounded-2xl flex items-center justify-center gap-2 md:gap-3 hover:bg-white/10 transition-all active:scale-95 cursor-pointer overflow-hidden">
+                                    <button aria-label="View Resume" className="flex-1 md:flex-none group relative px-4 py-3 md:px-7 md:py-4 lg:px-8 lg:py-4 bg-white/5 border border-white/10 text-white text-xs md:text-sm lg:text-base font-bold rounded-xl md:rounded-2xl flex items-center justify-center gap-2 md:gap-3 hover:bg-white/10 transition-all active:scale-95 cursor-pointer overflow-hidden">
                                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                                         <span>View Resume</span>
-                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white/40 group-hover:text-[#7FFFD4] transition-colors">
+                                        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white/40 group-hover:text-[#7FFFD4] transition-colors">
                                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
                                         </svg>
                                     </button>
@@ -203,18 +204,6 @@ export default function Hero() {
 
             {/* Deeper Bottom Fade for seamless transition to About */}
             <div className="absolute bottom-0 left-0 right-0 h-[30vh] bg-gradient-to-t from-[#030014] via-[#030014]/60 to-transparent z-20 pointer-events-none" />
-
-            <style jsx>{`
-                @keyframes scan {
-                    0% { transform: translateY(0); opacity: 0; }
-                    50% { opacity: 0.5; }
-                    100% { transform: translateY(100%); opacity: 0; }
-                }
-                @keyframes spin {
-                    from { transform: rotate(0deg); }
-                    to { transform: rotate(360deg); }
-                }
-            `}</style>
         </section>
     );
 }

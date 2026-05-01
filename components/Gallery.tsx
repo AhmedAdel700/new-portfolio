@@ -24,13 +24,21 @@ export default function Gallery({ isFullPage = false, id = "gallery" }: GalleryP
 
     const filteredProjects = projects.filter(project => {
         const matchesCategory = activeCategory === "All" || project.category === activeCategory;
-        const matchesSearch = project.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                             project.description.toLowerCase().includes(searchQuery.toLowerCase());
+        const query = searchQuery.toLowerCase();
+        
+        // The mapped projects object uses 'skills' array instead of 'tech' string
+        const matchesSkills = project.skills && project.skills.some((skill: string) => skill.toLowerCase().includes(query));
+
+        const matchesSearch = project.title.toLowerCase().includes(query) || 
+                             project.description.toLowerCase().includes(query) ||
+                             matchesSkills ||
+                             (project.category && project.category.toLowerCase().includes(query));
+                             
         return matchesCategory && matchesSearch;
     });
 
     return (
-        <section id={id} className={`relative w-full ${isFullPage ? 'min-h-screen pt-32 pb-20' : 'py-20'} bg-[#030014] overflow-hidden selection:bg-[#7FFFD4] selection:text-black font-sans`}>
+        <section id={id} aria-label="Project Gallery" className={`relative w-full ${isFullPage ? 'min-h-screen pt-32 pb-20' : 'py-20'} bg-[#030014] overflow-hidden selection:bg-[#7FFFD4] selection:text-black font-sans`}>
             
             {/* Ambient Background */}
             <div className={`absolute inset-0 z-0 opacity-20 pointer-events-none ${isFullPage ? 'fixed' : ''}`}>
@@ -72,7 +80,9 @@ export default function Gallery({ isFullPage = false, id = "gallery" }: GalleryP
                             </motion.div>
                         )}
 
-                        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 border-b border-white/5 pb-16">
+                        <div className="relative flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-16">
+                            {/* Bottom Horizontal Separator (Signature Mint) */}
+                            <div className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#7FFFD4]/50 to-transparent shadow-[0_0_15px_rgba(127,255,212,0.2)]" />
                             <div className="space-y-6">
                                 <motion.div 
                                     initial={{ opacity: 0, y: 20 }}
@@ -113,7 +123,8 @@ export default function Gallery({ isFullPage = false, id = "gallery" }: GalleryP
                                     <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/50 group-focus-within:text-[#7FFFD4] transition-colors" />
                                     <input 
                                         type="text" 
-                                        placeholder="Search artifacts..."
+                                        aria-label="Search projects by name, tech stack, or type"
+                                        placeholder="Search by name, tech stack, or type..."
                                         value={searchQuery}
                                         onChange={(e) => setSearchQuery(e.target.value)}
                                         className="w-full bg-white/[0.03] border border-white/20 rounded-xl py-4 pl-12 pr-6 text-white placeholder:text-white/50 focus:outline-none focus:ring-1 focus:ring-[#7FFFD4]/30 focus:bg-white/[0.05] transition-all"
@@ -140,6 +151,8 @@ export default function Gallery({ isFullPage = false, id = "gallery" }: GalleryP
                                 <button
                                     key={cat}
                                     onClick={() => setActiveCategory(cat)}
+                                    aria-label={`Filter by ${cat}`}
+                                    aria-pressed={activeCategory === cat}
                                     className={`relative px-5 py-2 md:px-7 md:py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-colors duration-300 ${
                                         activeCategory === cat 
                                         ? 'text-[#030014]' 
@@ -200,7 +213,7 @@ export default function Gallery({ isFullPage = false, id = "gallery" }: GalleryP
                             <p className="text-white/20 text-2xl font-medium">No artifacts found matching your query.</p>
                             <button 
                                 onClick={() => { setActiveCategory("All"); setSearchQuery(""); }}
-                                className="text-[#7FFFD4] text-xs font-black uppercase tracking-widest hover:underline"
+                                className="text-[#7FFFD4] text-xs font-black uppercase tracking-widest hover:underline cursor-pointer"
                             >
                                 Reset Filters
                             </button>
