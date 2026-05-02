@@ -20,13 +20,13 @@ export default function Hero() {
     };
 
     return (
-        <section aria-label="Hero Section" className="relative w-full min-h-screen bg-[#030014] flex flex-col items-center overflow-hidden font-sans">
+        <section aria-label="Hero Section" className="relative w-full h-auto md:h-screen bg-[#030014] flex flex-col items-center overflow-hidden font-sans">
             {/* Laser Background - Fixed props as requested */}
             <div className="absolute inset-0 z-0">
                 <LaserFlow
                     color="#7FFFD4"
                     horizontalBeamOffset={0}
-                    verticalBeamOffset={screen.isMobile ? 0.26 : screen.xl ? 0.257 : 0.24}
+                    verticalBeamOffset={screen.isMobile ? 0.14 : screen.xl ? 0.257 : 0.24}
                     verticalSizing={1.8}
                     horizontalSizing={1}
                     wispDensity={1.5}
@@ -68,7 +68,7 @@ export default function Hero() {
                     <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#7FFFD4]/40 to-transparent opacity-50" />
 
                     {/* Unified Grid Layout */}
-                    <div className="grid grid-cols-1 md:grid-cols-12 gap-y-10 md:gap-y-8 items-start z-10 w-full">
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-y-4 2xl:gap-y-8 items-start z-10 w-full">
 
                         {/* 1. Top Row: Badge & Info */}
                         <motion.div
@@ -77,8 +77,8 @@ export default function Hero() {
                             transition={{ duration: 0.6, delay: 0.5 }}
                             className="col-span-1 md:col-span-8"
                         >
-                            <div className="inline-flex items-center gap-3 px-3 py-1 md:px-4 md:py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-white/70 text-[8px] md:text-[10px] font-bold tracking-[0.2em] uppercase">
-                                <span className="w-1.5 h-1.5 rounded-full bg-[#7FFFD4] shadow-[0_0_8px_#7FFFD4]" />
+                            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.02] border border-white/10 text-white/40 text-[11px] md:text-xs font-black tracking-widest uppercase group/badge transition-colors duration-500 hover:border-[#7FFFD4]/30">
+                                <span className="w-2 h-2 rounded-full bg-[#7FFFD4] shadow-[0_0_8px_#7FFFD4]" />
                                 &lt;Creative Web Developer /&gt;
                             </div>
                         </motion.div>
@@ -106,7 +106,7 @@ export default function Hero() {
                             transition={{ duration: 0.8, delay: 0.7 }}
                             className="col-span-1 md:col-span-8"
                         >
-                            <h1 className="text-white text-6xl md:text-7xl lg:text-8xl 2xl:text-9xl font-black tracking-tight leading-[0.85]">
+                            <h1 className="text-white text-5xl sm:text-7xl lg:text-8xl font-black">
                                 CRAFTING<br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7FFFD4] to-[#A7F3D0]">UNIQUE</span><br />
                                 EXPERIENCE
@@ -118,9 +118,9 @@ export default function Hero() {
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-                            className="col-span-1 md:col-span-4 md:row-span-2 flex justify-center md:justify-end md:translate-x-8 lg:translate-x-12"
+                            className="hidden col-span-1 md:col-span-4 md:row-span-2 md:flex justify-center md:justify-end md:translate-x-8 lg:translate-x-12"
                         >
-                            <div className="relative w-80 h-80 md:w-[380px] md:h-[380px] lg:w-[440px] lg:h-[440px] 2xl:w-[500px] 2xl:h-[500px]">
+                            <div className="relative w-[280px] h-[100px] sm:w-[320px] h-[320px] md:w-[380px] md:h-[380px] lg:w-[440px] lg:h-[440px] xl:w-[500px] xl:h-[500px]">
 
                                 {/* Hidden SVG Definition for the Normalized User Path */}
                                 <svg aria-hidden="true" width="0" height="0" className="absolute">
@@ -149,7 +149,7 @@ export default function Hero() {
                                             src="/assets/AA.jpeg"
                                             alt="Ahmed Adel"
                                             fill
-                                            className="object-cover object-right p-10"
+                                            className="object-cover object-center pe-10 pt-10"
                                         />
                                     </div>
                                 </div>
@@ -172,7 +172,7 @@ export default function Hero() {
                                 </p>
 
                                 <div className="flex w-full md:w-auto gap-3 md:gap-4 items-center">
-                                    <button 
+                                    <button
                                         onClick={scrollToContact}
                                         aria-label="Scroll to contact section"
                                         className="flex-1 md:flex-none group relative px-4 py-3 md:px-8 md:py-4 lg:px-10 lg:py-4 bg-[#7FFFD4] text-[#030014] text-xs md:text-sm lg:text-base font-bold rounded-xl md:rounded-2xl transition-all shadow-[0_0_20px_rgba(127,255,212,0.2)] hover:shadow-[0_0_40px_rgba(127,255,212,0.4)] active:scale-95 cursor-pointer"

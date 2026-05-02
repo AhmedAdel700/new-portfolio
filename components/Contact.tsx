@@ -139,10 +139,10 @@ export default function Contact() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="inline-flex items-center gap-3 px-3 py-1 md:px-4 md:py-1.5 mb-8 rounded-full bg-white/[0.03] border border-white/[0.08] text-white/70 text-[8px] md:text-[10px] font-bold tracking-[0.2em] uppercase"
+                        className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.02] border border-white/10 text-white/40 text-[11px] md:text-xs font-black tracking-widest uppercase group/badge transition-colors duration-500 hover:border-[#7FFFD4]/30 mb-8"
                     >
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#7FFFD4] shadow-[0_0_8px_#7FFFD4]" />
-                        Let's Connect
+                        <span className="w-2 h-2 rounded-full bg-[#7FFFD4] shadow-[0_0_8px_#7FFFD4]" />
+                        Contact / Get In Touch
                     </motion.div>
                     
                     <motion.h2 
@@ -150,10 +150,10 @@ export default function Contact() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.3 }}
-                        className="text-7xl lg:text-9xl font-black text-white tracking-tight mb-8 leading-[0.9] uppercase"
+                        className="text-white text-6xl sm:text-7xl lg:text-8xl font-black tracking-tight leading-[0.85] uppercase mb-8"
                     >
                         GOT A PROJECT<br />
-                        <span className="text-[#7FFFD4]">IN MIND?</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7FFFD4] to-emerald-400">IN MIND?</span>
                     </motion.h2>
                     
                     <motion.p 
@@ -161,7 +161,7 @@ export default function Contact() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.4 }}
-                        className="text-white/50 text-sm md:text-base lg:text-lg max-w-2xl leading-relaxed"
+                        className="text-white/50 text-base md:text-lg max-w-2xl leading-relaxed text-left"
                     >
                         Whether you have a specific project or just want to explore possibilities, 
                         I'm always open to discussing new ideas and opportunities. Let's build something exceptional together.
@@ -191,8 +191,8 @@ export default function Contact() {
                                         <Mail className="w-6 h-6" />
                                     </div>
                                     <div>
-                                        <p className="text-white/40 text-sm mb-1 uppercase tracking-wider font-medium">Email</p>
-                                        <p className="text-white text-lg group-hover/item:text-[#7FFFD4] font-medium transition-colors">ahmedadel.engineer1@gmail.com</p>
+                                        <p className="text-white/40 text-[10px] md:text-sm mb-1 uppercase tracking-wider font-medium">Email</p>
+                                        <p className="text-white text-sm md:text-base lg:text-lg group-hover/item:text-[#7FFFD4] font-medium transition-colors break-all">ahmedadel.engineer1@gmail.com</p>
                                     </div>
                                 </a>
                                 
@@ -201,8 +201,8 @@ export default function Contact() {
                                         <Phone className="w-6 h-6" />
                                     </div>
                                     <div>
-                                        <p className="text-white/40 text-sm mb-1 uppercase tracking-wider font-medium">Phone</p>
-                                        <p className="text-white text-lg group-hover/item:text-[#7FFFD4] font-medium transition-colors">+20 128 391 0247</p>
+                                        <p className="text-white/40 text-[10px] md:text-sm mb-1 uppercase tracking-wider font-medium">Phone</p>
+                                        <p className="text-white text-sm md:text-base lg:text-lg group-hover/item:text-[#7FFFD4] font-medium transition-colors">+20 128 391 0247</p>
                                     </div>
                                 </a>
 
@@ -211,8 +211,8 @@ export default function Contact() {
                                         <MapPin className="w-6 h-6" />
                                     </div>
                                     <div>
-                                        <p className="text-white/40 text-sm mb-1 uppercase tracking-wider font-medium">Location</p>
-                                        <p className="text-white text-lg font-medium">Cairo, Egypt <span className="text-white/40 text-sm font-normal ml-2">Available Worldwide</span></p>
+                                        <p className="text-white/40 text-[10px] md:text-sm mb-1 uppercase tracking-wider font-medium">Location</p>
+                                        <p className="text-white text-sm md:text-base lg:text-lg font-medium">Cairo, Egypt <span className="text-white/40 text-xs md:text-sm font-normal ml-2">Available Worldwide</span></p>
                                     </div>
                                 </div>
                             </div>

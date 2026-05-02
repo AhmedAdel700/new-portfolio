@@ -114,7 +114,7 @@ export default function About() {
             >
 
                 {/* 1. High-Impact Intro Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-12 lg:gap-x-20 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-6 sm:gap-y-12 lg:gap-x-20 items-start">
 
                     {/* Left: Identity (Col 1-7) */}
                     <motion.div
@@ -122,14 +122,14 @@ export default function About() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="col-span-1 lg:col-span-7 space-y-8 text-center lg:text-left"
+                        className="col-span-1 lg:col-span-7 space-y-6 sm:space-y-7 text-left"
                     >
                         <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.02] border border-white/10 text-white/40 text-[11px] md:text-xs font-black tracking-widest uppercase group/badge transition-colors duration-500 hover:border-[#7FFFD4]/30">
                             <span className="w-2 h-2 rounded-full bg-[#7FFFD4] shadow-[0_0_8px_#7FFFD4]" />
                             Ahmed Adel / Identity
                         </div>
 
-                        <h2 className="text-white text-7xl lg:text-9xl font-black tracking-tighter leading-[0.95] lg:leading-[0.85] uppercase">
+                        <h2 className="text-white text-6xl sm:text-7xl lg:text-8xl font-black tracking-tight leading-[0.85] uppercase">
                             CREATIVE <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7FFFD4] to-emerald-400">PIONEER</span>
                         </h2>
@@ -141,7 +141,7 @@ export default function About() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: 0.6 }}
-                            className="flex flex-col items-center lg:items-start gap-6"
+                            className="flex flex-col items-start gap-6"
                         >
                             <span className="text-white/30 text-xs font-black uppercase tracking-[0.5em]">Digital Presence</span>
                             <div className="flex items-center gap-8">
@@ -189,10 +189,10 @@ export default function About() {
                         className="col-span-1 lg:col-span-5 space-y-8"
                     >
                         <div className="space-y-8">
-                            <p className="text-white/80 text-xl md:text-2xl leading-relaxed font-light text-center lg:text-left">
+                            <p className="text-white/80 text-xl md:text-2xl leading-relaxed font-light text-left">
                                 I specialize in building <span className="text-[#7FFFD4] font-medium">high-performance web solutions</span> where technical precision meets modern aesthetics.
                             </p>
-                            <p className="text-white/40 text-sm md:text-base leading-relaxed max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
+                            <p className="text-white/40 text-sm md:text-base leading-relaxed max-w-xl text-left">
                                 Mastering the synergy of React and Next.js, I architect resilient digital infrastructures that balance sophisticated engineering with refined, human-centric interactions.
                             </p>
                         </div>
@@ -209,15 +209,15 @@ export default function About() {
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 pt-8 relative">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10 pt-8 relative">
                             {/* Top Horizontal Separator (Signature Mint) */}
                             <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#7FFFD4]/50 to-transparent shadow-[0_0_15px_rgba(127,255,212,0.2)]" />
 
-                            <div className="space-y-4 text-center lg:text-left">
+                            <div className="space-y-4 text-left">
                                 <h4 className="text-[#7FFFD4] font-black text-xs uppercase tracking-[0.3em]">Strategic Synergy</h4>
                                 <p className="text-white/40 text-[13px] md:text-sm leading-relaxed font-medium">Translating complex technical roadmaps into clear, collaborative narratives to drive seamless cross-functional alignment.</p>
                             </div>
-                            <div className="space-y-4 text-center lg:text-left">
+                            <div className="space-y-4 text-left">
                                 <h4 className="text-[#7FFFD4] font-black text-xs uppercase tracking-[0.3em]">Architectural Logic</h4>
                                 <p className="text-white/40 text-[13px] md:text-sm leading-relaxed font-medium">Deconstructing intricate system bottlenecks with surgical precision and scalable engineering solutions.</p>
                             </div>
@@ -233,11 +233,11 @@ export default function About() {
                     transition={{ duration: 0.8 }}
                     className="overflow-hidden"
                 >
-                    <div className="relative flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10">
+                    <div className="relative flex flex-col lg:flex-row lg:items-end justify-between gap-6 pt-6 sm:pt-0 pb-6 sm:pb-10">
                         {/* Bottom Horizontal Separator (Signature Mint) */}
                         <div className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#7FFFD4]/50 to-transparent shadow-[0_0_15px_rgba(127,255,212,0.2)]" />
 
-                        <div className="space-y-4 text-center lg:text-left">
+                        <div className="space-y-4 text-left">
                             <h3 className="text-white text-3xl md:text-5xl font-black tracking-tight uppercase">Technical Stack</h3>
                             <p className="text-white/30 text-xs md:text-sm max-w-md uppercase tracking-[0.2em] font-bold">The tools and technologies driving my engineering process.</p>
                         </div>

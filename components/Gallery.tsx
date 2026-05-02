@@ -63,7 +63,7 @@ export default function Gallery({ isFullPage = false, id = "gallery" }: GalleryP
                 <div className="container mx-auto px-6 max-w-[1450px]">
                     
                     {/* Header Section */}
-                    <div className="flex flex-col gap-8 lg:gap-12 mb-10 lg:mb-20">
+                    <div className="flex flex-col gap-4.5 sm:gap-6 lg:gap-12 mb-10 lg:mb-20">
                         {isFullPage && (
                             <motion.div 
                                 initial={{ opacity: 0, x: -20 }}
@@ -80,7 +80,7 @@ export default function Gallery({ isFullPage = false, id = "gallery" }: GalleryP
                             </motion.div>
                         )}
 
-                        <div className="relative flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-16">
+                        <div className="relative flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-10 sm:pb-16">
                             {/* Bottom Horizontal Separator (Signature Mint) */}
                             <div className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#7FFFD4]/50 to-transparent shadow-[0_0_15px_rgba(127,255,212,0.2)]" />
                             <div className="space-y-6">
@@ -89,9 +89,9 @@ export default function Gallery({ isFullPage = false, id = "gallery" }: GalleryP
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.6, delay: 0.1 }}
-                                    className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.02] border border-white/10 text-[#7FFFD4] text-[10px] font-black tracking-[0.3em] uppercase"
+                                    className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.02] border border-white/10 text-white/40 text-[11px] md:text-xs font-black tracking-widest uppercase group/badge transition-colors duration-500 hover:border-[#7FFFD4]/30"
                                 >
-                                    <Monitor className="w-3 h-3" />
+                                    <span className="w-2 h-2 rounded-full bg-[#7FFFD4] shadow-[0_0_8px_#7FFFD4]" />
                                    MY GALLERY / WORK
                                 </motion.div>
                                 <motion.h2 

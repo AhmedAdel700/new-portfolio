@@ -52,26 +52,6 @@ export const dataOfProjects: Project[] = [
     category: "Landing Page",
   },
   {
-    id: 4,
-    title: "Anas Grills",
-    description:
-      "Anas Grills is a popular restaurant and butchery known for its delicious grilled meats and high-quality products, offering a unique dining experience for meat lovers.",
-    tech: "Next.js | TypeScript | Tailwind CSS | CSS(3) | Figma | Next-Intl",
-    image: "/assets/anas.png",
-    link: "https://anasgrills.com/en",
-    category: "Landing Page",
-  },
-  {
-    id: 5,
-    title: "Halal Center",
-    description:
-      "It is one of the leading centers specializing in offering Halal-related courses in particular, as well as scientific and practical training programs in general.",
-    tech: "HTML(5) | CSS(3) | JavaScript | Jquery | Tailwind CSS | CSS(3) | Figma",
-    image: "/assets/halalCenter.png",
-    link: "https://halalcenter.sa/en",
-    category: "Platform",
-  },
-  {
     id: 6,
     title: "Se-University",
     description:
@@ -250,6 +230,26 @@ export const dataOfProjects: Project[] = [
     github: "https://github.com/AhmedAdel700/Prayer-Timings",
     link: "https://prayer-timings-project.netlify.app/",
     category: "Website",
+  },
+  {
+    id: 4,
+    title: "Anas Grills",
+    description:
+      "Anas Grills is a popular restaurant and butchery known for its delicious grilled meats and high-quality products, offering a unique dining experience for meat lovers.",
+    tech: "Next.js | TypeScript | Tailwind CSS | CSS(3) | Figma | Next-Intl",
+    image: "/assets/anas.png",
+    link: "https://anasgrills.com/en",
+    category: "Landing Page",
+  },
+  {
+    id: 5,
+    title: "Halal Center",
+    description:
+      "It is one of the leading centers specializing in offering Halal-related courses in particular, as well as scientific and practical training programs in general.",
+    tech: "HTML(5) | CSS(3) | JavaScript | Jquery | Tailwind CSS | CSS(3) | Figma",
+    image: "/assets/halalCenter.png",
+    link: "https://halalcenter.sa/en",
+    category: "Platform",
   },
 ];
 
