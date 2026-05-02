@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import { LaserFlow } from './LaserFlow';
 
 import PlasmaWave from './PlasmaWave';
+import Link from 'next/link';
 
 
 export default function Hero() {
@@ -175,18 +176,23 @@ export default function Hero() {
                                     <button
                                         onClick={scrollToContact}
                                         aria-label="Scroll to contact section"
-                                        className="flex-1 md:flex-none group relative px-4 py-3 md:px-8 md:py-4 lg:px-10 lg:py-4 bg-[#7FFFD4] text-[#030014] text-xs md:text-sm lg:text-base font-bold rounded-xl md:rounded-2xl transition-all shadow-[0_0_20px_rgba(127,255,212,0.2)] hover:shadow-[0_0_40px_rgba(127,255,212,0.4)] active:scale-95 cursor-pointer"
+                                        className="flex-1 md:flex-none group relative px-4 py-3 md:px-8 md:py-4 lg:px-10 lg:py-4 bg-[#7FFFD4] text-[#030014] text-xs md:text-sm lg:text-base font-bold rounded-xl md:rounded-2xl transition-all shadow-[0_0_20px_rgba(127,255,212,0.2)] hover:shadow-[0_0_40px_rgba(127,255,212,0.4)] cursor-pointer"
                                     >
-                                        <span>Work with me</span>
+                                        <span>Work With Me</span>
                                     </button>
 
-                                    <button aria-label="View Resume" className="flex-1 md:flex-none group relative px-4 py-3 md:px-7 md:py-4 lg:px-8 lg:py-4 bg-white/5 border border-white/10 text-white text-xs md:text-sm lg:text-base font-bold rounded-xl md:rounded-2xl flex items-center justify-center gap-2 md:gap-3 hover:bg-white/10 transition-all active:scale-95 cursor-pointer overflow-hidden">
+                                    <Link
+                                        href="/Ahmed Adel Resume.pdf"
+                                        download="Ahmed Adel Resume.pdf"
+                                        aria-label="Download Resume" 
+                                        className="flex-1 md:flex-none group relative px-4 py-3 md:px-7 md:py-4 lg:px-8 lg:py-4 bg-white/5 border border-white/10 text-white text-xs md:text-sm lg:text-base font-bold rounded-xl md:rounded-2xl flex items-center justify-center gap-2 md:gap-3 hover:bg-white/10 transition-all cursor-pointer overflow-hidden"
+                                    >
                                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                                         <span>View Resume</span>
                                         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white/40 group-hover:text-[#7FFFD4] transition-colors">
                                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
                                         </svg>
-                                    </button>
+                                    </Link>
                                 </div>
                             </div>
                         </motion.div>
