@@ -17,7 +17,7 @@ export const dataOfProjects: Project[] = [
     description:
       "KOIA specializes in performance driven commercial environments corporate offices, medical facilities, and retail commercial spaces where compliance, precision, and operational readiness are critical We Deliver with Confidence",
     tech: "Next.js | TypeScript | RTK Query | Tailwind CSS | CSS(3) | Figma | Next-Intl",
-    image: "/assets/kola.png",
+    image: "/assets/koia.png",
     link: "https://kola-contractions.netlify.app/en",
     category: "Landing Page",
   },
@@ -27,7 +27,7 @@ export const dataOfProjects: Project[] = [
     description:
       "Be Training is one of the companies under Be Group (كن الرقمية), and is regarded as one of the pioneering initiatives in the Kingdom of Saudi Arabia in the field of professional and personal competency development, contributing to enhancing the performance of both individuals and institutions alike",
     tech: "HTML(5) | CSS(3) | JavaScript | Jquery | Bootstrap | Figma",
-    image: "/assets/betraining.png",
+    image: "/assets/betraining1.png",
     link: "https://betraining.com.sa/ar",
     category: "Platform",
   },
@@ -47,7 +47,7 @@ export const dataOfProjects: Project[] = [
     description:
       "Itqan School Management System simplifies the management of student data, grades, attendance, schedules, and communication. It empowers schools to efficiently track performance and enhance collaboration between teachers, students, and parents.",
     tech: "Next.js | TypeScript | RTK Query | Tailwind CSS | CSS(3) | Figma",
-    image: "/assets/Itqan.png",
+    image: "/assets/Itqan1.png",
     link: "https://itqan-landing.vercel.app/",
     category: "Landing Page",
   },
@@ -237,7 +237,7 @@ export const dataOfProjects: Project[] = [
     description:
       "Anas Grills is a popular restaurant and butchery known for its delicious grilled meats and high-quality products, offering a unique dining experience for meat lovers.",
     tech: "Next.js | TypeScript | Tailwind CSS | CSS(3) | Figma | Next-Intl",
-    image: "/assets/anas.png",
+    image: "/assets/anas1.png",
     link: "https://anasgrills.com/en",
     category: "Landing Page",
   },
@@ -247,7 +247,7 @@ export const dataOfProjects: Project[] = [
     description:
       "It is one of the leading centers specializing in offering Halal-related courses in particular, as well as scientific and practical training programs in general.",
     tech: "HTML(5) | CSS(3) | JavaScript | Jquery | Tailwind CSS | CSS(3) | Figma",
-    image: "/assets/halalCenter.png",
+    image: "/assets/halalCenter1.png",
     link: "https://halalcenter.sa/en",
     category: "Platform",
   },

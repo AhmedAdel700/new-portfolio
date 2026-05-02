@@ -89,7 +89,7 @@ export default function ProjectCard({ project, disableTilt = false }: ProjectCar
                                 src={project.image}
                                 alt={project.title}
                                 fill
-                                className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(.25,.46,.45,.94)] group-hover:scale-[1.08]"
+                                className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(.25,.46,.45,.94)] scale-[1.1] group-hover:scale-[1.2]"
                             />
                             {/* Gradient overlay */}
                             <div className="absolute inset-0 bg-gradient-to-t from-[#030014]/70 via-transparent to-transparent" />
