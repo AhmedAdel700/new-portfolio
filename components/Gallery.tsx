@@ -153,7 +153,7 @@ export default function Gallery({ isFullPage = false, id = "gallery" }: GalleryP
                                     onClick={() => setActiveCategory(cat)}
                                     aria-label={`Filter by ${cat}`}
                                     aria-pressed={activeCategory === cat}
-                                    className={`relative px-5 py-2 md:px-7 md:py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-colors duration-300 ${
+                                    className={`relative cursor-pointer px-5 py-2 md:px-7 md:py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-colors duration-300 ${
                                         activeCategory === cat 
                                         ? 'text-[#030014]' 
                                         : 'text-white/40 hover:text-white'

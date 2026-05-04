@@ -121,8 +121,8 @@ export default function Contact() {
                 />
             </div>
             
-            <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#7FFFD4]/10 rounded-full blur-[120px] pointer-events-none" />
-            <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(127,255,212,0.1)_0%,transparent_70%)] pointer-events-none" />
+            <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(16,185,129,0.1)_0%,transparent_70%)] pointer-events-none" />
 
             <div className="container mx-auto px-6 max-w-7xl relative z-10">
                 
@@ -180,8 +180,10 @@ export default function Contact() {
                         className="lg:col-span-5 flex flex-col gap-8"
                     >
                         {/* Main Contact Card */}
-                        <div className="bg-white/[0.02] border border-white/10 rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-10 backdrop-blur-xl hover:bg-white/[0.04] transition-colors duration-500 relative overflow-hidden group">
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-[#7FFFD4]/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 group-hover:bg-[#7FFFD4]/10 transition-colors duration-500" />
+                        <div className="bg-gradient-to-br from-[#0a0d1a] via-[#030014] to-[#030014] border border-white/10 rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-10 hover:border-white/20 transition-all duration-500 relative overflow-hidden group shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
+                            {/* Reflective Glass Highlight */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] via-transparent to-transparent pointer-events-none" />
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-[radial-gradient(circle,rgba(127,255,212,0.05)_0%,transparent_70%)] -translate-y-1/2 translate-x-1/2 group-hover:bg-[radial-gradient(circle,rgba(127,255,212,0.1)_0%,transparent_70%)] transition-colors duration-500" />
                             
                             <h3 className="text-2xl font-semibold text-white mb-10 relative z-10">Contact Information</h3>
                             
@@ -219,7 +221,9 @@ export default function Contact() {
                         </div>
 
                         {/* Digital Presence Card */}
-                        <div className="bg-white/[0.02] border border-white/10 rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-10 backdrop-blur-xl hover:bg-white/[0.04] transition-colors duration-500">
+                        <div className="bg-gradient-to-br from-[#0a0d1a] via-[#030014] to-[#030014] border border-white/10 rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-10 hover:border-white/20 transition-all duration-500 relative overflow-hidden">
+                            {/* Reflective Glass Highlight */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] via-transparent to-transparent pointer-events-none" />
                             <h3 className="text-xl font-semibold text-white mb-8 uppercase tracking-widest text-sm opacity-70">Digital Presence</h3>
                             <div className="flex flex-wrap gap-4">
                                 {[
@@ -284,7 +288,9 @@ export default function Contact() {
                         transition={{ duration: 0.8, delay: 0.5 }}
                         className="lg:col-span-7"
                     >
-                        <div className="bg-white/[0.02] border border-white/10 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-12 backdrop-blur-xl relative overflow-hidden shadow-2xl">
+                        <div className="bg-gradient-to-br from-[#0a0d1a] via-[#030014] to-[#030014] border border-white/10 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-12 relative overflow-hidden shadow-2xl">
+                            {/* Reflective Glass Highlight */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] via-transparent to-transparent pointer-events-none" />
                             {/* Top Horizontal Separator (Signature Mint) */}
                             <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#7FFFD4]/50 to-transparent shadow-[0_0_15px_rgba(127,255,212,0.2)]" />
                             

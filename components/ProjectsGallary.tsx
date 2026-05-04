@@ -109,7 +109,7 @@ export default function ProjectsGallary() {
                             <button
                                 onClick={() => swiperRef.current?.slidePrev()}
                                 aria-label="Previous project"
-                                className="group/btn w-12 h-12 rounded-full border border-white/20 bg-white/[0.02] backdrop-blur-sm flex items-center justify-center text-white/40 hover:border-[#7FFFD4] hover:text-[#030014] hover:bg-[#7FFFD4] transition-all duration-500 cursor-pointer"
+                                className="group/btn w-12 h-12 rounded-full border border-white/20 bg-white/[0.08] flex items-center justify-center text-white/40 hover:border-[#7FFFD4] hover:text-[#030014] hover:bg-[#7FFFD4] transition-all duration-500 cursor-pointer"
                             >
                                 <ArrowLeft className="w-5 h-5 transition-transform duration-300" />
                             </button>
@@ -117,7 +117,7 @@ export default function ProjectsGallary() {
                             <button
                                 onClick={() => swiperRef.current?.slideNext()}
                                 aria-label="Next project"
-                                className="group/btn w-12 h-12 rounded-full border border-white/20 bg-white/[0.02] backdrop-blur-sm flex items-center justify-center text-white/40 hover:border-[#7FFFD4] hover:text-[#030014] hover:bg-[#7FFFD4] transition-all duration-500 cursor-pointer"
+                                className="group/btn w-12 h-12 rounded-full border border-white/20 bg-white/[0.08] flex items-center justify-center text-white/40 hover:border-[#7FFFD4] hover:text-[#030014] hover:bg-[#7FFFD4] transition-all duration-500 cursor-pointer"
                             >
                                 <ArrowRight className="w-5 h-5 transition-transform duration-300" />
                             </button>
@@ -127,7 +127,7 @@ export default function ProjectsGallary() {
 
 
                 {/* Centered Swiper Slider with Coverflow Effect */}
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, y: 100, rotateX: -15 }}
                     whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
@@ -142,7 +142,7 @@ export default function ProjectsGallary() {
                 >
                     <Swiper
                         modules={[Navigation, Autoplay, EffectCoverflow]}
-                        onSwiper={(swiper) => { 
+                        onSwiper={(swiper) => {
                             swiperRef.current = swiper;
                             swiper.autoplay.stop();
                         }}

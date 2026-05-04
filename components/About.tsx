@@ -199,11 +199,11 @@ export default function About() {
 
                         {/* Experience Badges - Balanced Location */}
                         <div className="grid grid-cols-2 gap-4 w-full">
-                            <div className="flex items-center justify-center gap-3 px-5 py-3 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-md group/stat transition-all duration-300 hover:border-[#7FFFD4]/30 hover:bg-white/[0.05]">
+                            <div className="flex items-center justify-center gap-3 px-5 py-3 rounded-full bg-white/[0.08] border border-white/10 group/stat transition-all duration-300 hover:border-[#7FFFD4]/30 hover:bg-white/[0.12]">
                                 <span className="text-[#7FFFD4] text-lg font-black tracking-tighter">3+</span>
                                 <span className="text-white/40 text-[10px] font-black uppercase tracking-widest">Years Exp</span>
                             </div>
-                            <div className="flex items-center justify-center gap-3 px-5 py-3 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-md group/stat transition-all duration-300 hover:border-[#7FFFD4]/30 hover:bg-white/[0.05]">
+                            <div className="flex items-center justify-center gap-3 px-5 py-3 rounded-full bg-white/[0.08] border border-white/10 group/stat transition-all duration-300 hover:border-[#7FFFD4]/30 hover:bg-white/[0.12]">
                                 <span className="text-white text-lg font-black tracking-tighter">24/7</span>
                                 <span className="text-white/40 text-[10px] font-black uppercase tracking-widest">Passion</span>
                             </div>

@@ -314,23 +314,33 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
       <div className="absolute inset-0 rounded-[inherit] pointer-events-none z-0">
         <div
           className="absolute inset-0 rounded-[inherit] pointer-events-none"
-          style={{ border: `2px solid ${hexToRgba(color, 0.6)}`, filter: 'blur(1px)' }}
+          style={{ border: `1px solid ${hexToRgba(color, 0.4)}` }}
         />
         <div
           className="absolute inset-0 rounded-[inherit] pointer-events-none"
-          style={{ border: `2px solid ${color}`, filter: 'blur(4px)' }}
+          style={{ border: `1px solid ${hexToRgba(color, 0.2)}` }}
         />
         <div
-          className="absolute inset-0 rounded-[inherit] pointer-events-none -z-[1] scale-110 opacity-30"
+          className="absolute inset-0 rounded-[inherit] pointer-events-none -z-[1] scale-[1.1] opacity-70"
           style={{
-            filter: 'blur(40px)',
-            background: `linear-gradient(-30deg, ${color}, transparent, ${color}, transparent, ${color})`,
-            opacity: 0.4
+            background: `radial-gradient(circle at 50% 50%, ${hexToRgba(color, 0.2)} 0%, ${hexToRgba(color, 0.05)} 50%, transparent 80%)`,
+          }}
+        />
+        <div
+          className="absolute inset-0 rounded-[inherit] pointer-events-none -z-[1] scale-[1.25] opacity-40"
+          style={{
+            background: `radial-gradient(circle at 50% 50%, ${hexToRgba(color, 0.1)} 0%, transparent 75%)`,
+          }}
+        />
+        <div
+          className="absolute inset-0 rounded-[inherit] pointer-events-none -z-[1] scale-[1.5] opacity-20"
+          style={{
+            background: `radial-gradient(circle at 50% 50%, ${hexToRgba(color, 0.05)} 0%, transparent 85%)`,
           }}
         />
 
       </div>
-      <div className="relative rounded-[inherit] z-[1]">{children}</div>
+      <div className="relative rounded-[inherit] z-[1] h-full w-full">{children}</div>
     </div>
   );
 };

@@ -21,13 +21,13 @@ export default function Hero() {
     };
 
     return (
-        <section aria-label="Hero Section" className="relative w-full h-auto md:h-screen bg-[#030014] flex flex-col items-center overflow-hidden font-sans">
+        <section id="home" aria-label="Hero Section" className="relative w-full h-auto md:h-screen bg-[#030014] flex flex-col items-center overflow-hidden font-sans">
             {/* Laser Background - Fixed props as requested */}
             <div className="absolute inset-0 z-0">
                 <LaserFlow
                     color="#7FFFD4"
                     horizontalBeamOffset={0}
-                    verticalBeamOffset={screen.isMobile ? 0.14 : screen.xl ? 0.257 : 0.24}
+                    verticalBeamOffset={screen.isMobile ? 0.14 : screen.xl ? 0.249 : 0.24}
                     verticalSizing={1.8}
                     horizontalSizing={1}
                     wispDensity={1.5}
@@ -50,8 +50,10 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, ease: "easeOut" }}
-                    className="relative w-full 2xl:h-full bg-[#030014]/60 backdrop-blur-3xl rounded-3xl p-5 md:p-10 lg:p-14 flex flex-col justify-between overflow-hidden shadow-2xl group/card"
+                    className="relative w-full 2xl:h-full bg-gradient-to-br from-[#0a0d1a] via-[#030014] to-[#030014] rounded-3xl p-5 md:p-10 lg:p-14 flex flex-col justify-between overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.5)] group/card"
                 >
+                    {/* Reflective Glass Highlight */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] via-transparent to-transparent pointer-events-none z-10" />
 
                     {/* Interior Card Background Effect */}
                     <div className="absolute inset-0 z-0 opacity-20 pointer-events-none mix-blend-screen">
