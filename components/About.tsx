@@ -129,7 +129,7 @@ export default function About() {
                             Ahmed Adel / Identity
                         </div>
 
-                        <h2 className="text-white text-6xl sm:text-7xl lg:text-8xl font-black tracking-tight leading-[0.85] uppercase">
+                        <h2 className="text-white text-6xl sm:text-7xl lg:text-8xl font-black tracking-tight uppercase">
                             CREATIVE <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7FFFD4] to-emerald-400">PIONEER</span>
                         </h2>
