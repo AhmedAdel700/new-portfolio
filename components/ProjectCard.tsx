@@ -42,7 +42,7 @@ export default function ProjectCard({ project, disableTilt = false }: ProjectCar
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             initial={false}
-            className="group relative h-[520px] w-full cursor-pointer select-none"
+            className="group relative min-h-[520px] h-full w-full cursor-pointer select-none"
             style={{ perspective: '1200px' }}
         >
             <ElectricBorder
@@ -85,7 +85,7 @@ export default function ProjectCard({ project, disableTilt = false }: ProjectCar
                 </div>
 
                 {/* 2. CONTENT LAYER */}
-                <div className="relative h-full z-20 p-8 flex flex-col justify-end overflow-hidden">
+                <div className="relative h-full z-20 p-8 flex flex-col justify-end">
                     
                     {/* ALWAYS VISIBLE: Header (Badge & Icon) + Title */}
                     <motion.div layout className="mb-2 z-30">
