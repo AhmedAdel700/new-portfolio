@@ -21,13 +21,13 @@ export default function Hero() {
     };
 
     return (
-        <section id="home" aria-label="Hero Section" className="relative w-full h-auto md:h-screen bg-[#030014] flex flex-col items-center overflow-hidden font-sans">
+        <section id="home" aria-label="Hero Section" className="relative w-full h-auto md:min-h-screen 2xl:min-h-screen bg-[#030014] flex flex-col items-center overflow-hidden font-sans">
             {/* Laser Background - Fixed props as requested */}
             <div className="absolute inset-0 z-0">
                 <LaserFlow
                     color="#7FFFD4"
                     horizontalBeamOffset={0}
-                    verticalBeamOffset={screen.isMobile ? 0.14 : screen.xl ? 0.249 : 0.24}
+                    verticalBeamOffset={screen.isMobile ? 0.14 : screen["2xl"] ? 0.198 : screen.xl ? 0.255 : 0.245}
                     verticalSizing={1.8}
                     horizontalSizing={1}
                     wispDensity={1.5}
@@ -40,7 +40,7 @@ export default function Hero() {
             <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#030014] to-transparent z-1 pointer-events-none" />
 
             {/* 1. Beam Area (Top 25vh) */}
-            <div className="h-[25vh] w-full relative z-10 pointer-events-none" />
+            <div className="h-[25vh] xl:h-[28vh] 2xl:h-[32vh] w-full relative z-10 pointer-events-none flex-shrink-0" />
 
             {/* 2. Content Card Area (Remaining 75vh) */}
             <div className="flex-1 w-full max-w-[1450px] px-4 md:px-8 pb-8 relative z-30">
@@ -121,7 +121,7 @@ export default function Hero() {
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-                            className="hidden col-span-1 md:col-span-4 md:row-span-2 md:flex justify-center md:justify-end md:translate-x-8 lg:translate-x-12"
+                            className="hidden col-span-1 md:col-span-4 md:row-span-2 xl:flex justify-center md:justify-end md:translate-x-8 lg:translate-x-12"
                         >
                             <div className="relative w-[280px] h-[100px] sm:w-[320px] h-[320px] md:w-[380px] md:h-[380px] lg:w-[440px] lg:h-[440px] xl:w-[500px] xl:h-[500px]">
 
@@ -186,7 +186,7 @@ export default function Hero() {
                                     <Link
                                         href="/Ahmed Adel Resume.pdf"
                                         download="Ahmed Adel Resume.pdf"
-                                        aria-label="Download Resume" 
+                                        aria-label="Download Resume"
                                         className="flex-1 md:flex-none group relative px-4 py-3 md:px-7 md:py-4 lg:px-8 lg:py-4 bg-white/5 border border-white/10 text-white text-xs md:text-sm lg:text-base font-bold rounded-xl md:rounded-2xl flex items-center justify-center gap-2 md:gap-3 hover:bg-white/10 transition-all cursor-pointer overflow-hidden"
                                     >
                                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
