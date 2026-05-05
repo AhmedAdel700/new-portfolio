@@ -34,12 +34,13 @@ export default function ProjectCard({ project, disableTilt = false }: ProjectCar
 
     return (
         <motion.div
+            layout
             ref={cardRef}
             onMouseMove={handleMouseMove}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             initial={false}
-            className="group relative min-h-[540px] h-full w-full cursor-pointer select-none overflow-hidden rounded-2xl bg-[#080320] border border-white/10 transition-all duration-500 hover:border-[#7FFFD4]/40 hover:shadow-[0_0_30px_rgba(127,255,212,0.1)]"
+            className="group relative h-[480px] md:h-full md:min-h-[540px] w-full cursor-pointer select-none overflow-hidden rounded-2xl bg-[#080320] border border-white/10 transition-all duration-500 hover:border-[#7FFFD4]/40 hover:shadow-[0_0_30px_rgba(127,255,212,0.1)]"
             style={{ perspective: '1200px' }}
         >
             {/* Inner Glow / Rim Light */}
@@ -95,14 +96,14 @@ export default function ProjectCard({ project, disableTilt = false }: ProjectCar
             </div>
 
             {/* 2. CONTENT LAYER */}
-            <div className="relative h-full z-20 p-8 flex flex-col justify-end">
+            <motion.div layout className="relative h-full z-20 p-6 md:p-8 flex flex-col justify-end">
                 
                 {/* Header Section */}
                 <motion.div layout className="mb-2">
                     <div className="flex items-center justify-between w-full mb-4">
-                        <div className="flex items-center gap-3">
-                            <span className="w-2.5 h-2.5 rounded-full bg-[#7FFFD4] shadow-[0_0_10px_#7FFFD4]" />
-                            <span className="text-[11px] font-bold text-[#7FFFD4] uppercase tracking-[0.3em] drop-shadow-[0_0_5px_rgba(127,255,212,0.5)]">
+                        <div className="flex items-center gap-2 md:gap-3">
+                            <span className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-[#7FFFD4] shadow-[0_0_10px_#7FFFD4]" />
+                            <span className="text-[10px] md:text-[11px] font-bold text-[#7FFFD4] uppercase tracking-[0.3em] drop-shadow-[0_0_5px_rgba(127,255,212,0.5)]">
                                 {project.category}
                             </span>
                         </div>
@@ -116,18 +117,18 @@ export default function ProjectCard({ project, disableTilt = false }: ProjectCar
                             <Link
                                 href={project.link}
                                 target="_blank"
-                                className="group/link flex w-11 h-11 items-center justify-center bg-white/10 border border-white/20 text-white rounded-xl hover:bg-[#7FFFD4] hover:text-[#040115] hover:border-[#7FFFD4] transition-all duration-300 backdrop-blur-none"
+                                className="group/link flex w-9 h-9 md:w-11 md:h-11 items-center justify-center bg-white/10 border border-white/20 text-white rounded-xl hover:bg-[#7FFFD4] hover:text-[#040115] hover:border-[#7FFFD4] transition-all duration-300 backdrop-blur-none"
                             >
-                                <ArrowUpRight className="w-5.5 h-5.5 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                                <ArrowUpRight className="w-4.5 h-4.5 md:w-5.5 md:h-5.5 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
                             </Link>
                         </motion.div>
                     </div>
                     
                     <motion.div layout>
-                        <h3 className="text-3xl md:text-4xl font-black text-white leading-none tracking-tighter uppercase mb-2 drop-shadow-md">
+                        <h3 className="text-2xl md:text-4xl font-black text-white leading-none tracking-tighter uppercase mb-2 drop-shadow-md">
                             {project.title}
                         </h3>
-                        <div className="h-0.5 w-16 bg-[#7FFFD4] group-hover:w-full transition-all duration-700 shadow-[0_0_10px_rgba(127,255,212,0.5)]" />
+                        <div className="h-0.5 w-12 md:w-16 bg-[#7FFFD4] group-hover:w-full transition-all duration-700 shadow-[0_0_10px_rgba(127,255,212,0.5)]" />
                     </motion.div>
                 </motion.div>
 
@@ -136,13 +137,17 @@ export default function ProjectCard({ project, disableTilt = false }: ProjectCar
                     {isHovered && (
                         <motion.div
                             key="content"
-                            initial={{ opacity: 0, y: 10 }}
+                            layout
+                            initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: 10 }}
-                            transition={{ duration: 0.4, ease: "easeOut" }}
-                            className="flex flex-col gap-6 mt-6"
+                            exit={{ opacity: 0, y: -10, transition: { duration: 0.3 } }}
+                            transition={{ 
+                                duration: 0.6, 
+                                ease: [0.22, 1, 0.36, 1] 
+                            }}
+                            className="flex flex-col gap-4 md:gap-6 mt-4 md:mt-6"
                         >
-                            <p className="text-[15px] text-white/80 leading-relaxed font-semibold drop-shadow-sm">
+                            <p className="text-sm md:text-[15px] text-white/80 leading-relaxed font-semibold drop-shadow-sm">
                                 {project.description}
                             </p>
 
@@ -155,7 +160,7 @@ export default function ProjectCard({ project, disableTilt = false }: ProjectCar
                                     {project.skills.map((skill, idx) => (
                                         <span
                                             key={idx}
-                                            className="px-3 py-1.5 text-[10px] font-bold text-[#7FFFD4] bg-[#7FFFD4]/10 border border-[#7FFFD4]/30 rounded-lg"
+                                            className="px-2.5 py-1 md:px-3 md:py-1.5 text-[9px] md:text-[10px] font-bold text-[#7FFFD4] bg-[#7FFFD4]/10 border border-[#7FFFD4]/30 rounded-lg"
                                         >
                                             {skill}
                                         </span>
@@ -165,7 +170,7 @@ export default function ProjectCard({ project, disableTilt = false }: ProjectCar
                         </motion.div>
                     )}
                 </AnimatePresence>
-            </div>
+            </motion.div>
 
             {/* HUD Decorative Elements */}
             <div className="absolute inset-0 z-30 pointer-events-none">
@@ -174,10 +179,10 @@ export default function ProjectCard({ project, disableTilt = false }: ProjectCar
                 <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                 
                 {/* Corner Accents - Brighter and Larger */}
-                <div className="absolute top-5 left-5 w-6 h-6 border-t-2 border-l-2 border-white/30 group-hover:border-[#7FFFD4]/70 transition-all duration-500" />
-                <div className="absolute top-5 right-5 w-6 h-6 border-t-2 border-r-2 border-white/30 group-hover:border-[#7FFFD4]/70 transition-all duration-500" />
-                <div className="absolute bottom-5 left-5 w-6 h-6 border-b-2 border-l-2 border-white/30 group-hover:border-[#7FFFD4]/70 transition-all duration-500" />
-                <div className="absolute bottom-5 right-5 w-6 h-6 border-b-2 border-r-2 border-white/30 group-hover:border-[#7FFFD4]/70 transition-all duration-500" />
+                <div className="absolute top-3 left-3 sm:top-5 sm:left-5 w-6 h-6 border-t-2 border-l-2 border-white/30 group-hover:border-[#7FFFD4]/70 transition-all duration-500" />
+                <div className="absolute top-3 right-3 sm:top-5 sm:right-5 w-6 h-6 border-t-2 border-r-2 border-white/30 group-hover:border-[#7FFFD4]/70 transition-all duration-500" />
+                <div className="absolute bottom-3 left-3 sm:bottom-5 sm:left-5 w-6 h-6 border-b-2 border-l-2 border-white/30 group-hover:border-[#7FFFD4]/70 transition-all duration-500" />
+                <div className="absolute bottom-3 right-3 sm:bottom-5 sm:right-5 w-6 h-6 border-b-2 border-r-2 border-white/30 group-hover:border-[#7FFFD4]/70 transition-all duration-500" />
 
                 {/* Scanline Effect */}
                 <motion.div 
