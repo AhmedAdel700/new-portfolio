@@ -61,6 +61,16 @@ export const dataOfProjects: Project[] = [
     link: "https://itqan-landing.vercel.app/",
     category: "Landing Page",
   },
+    {
+    id: 4.2,
+    title: "Real Estate Company",
+    description:
+      "Real Estate Company is a comprehensive platform designed to streamline , Effortlessly turn your ideas into a fully functional, responsive, no-code SaaS website in just minutes with the set of free components for Framer.",
+    tech: "Next.js | TypeScript | Next-Intl | Tailwind CSS | CSS(3) | HTML(5) | Git | GitHub | Vercel",
+    image: "/assets/company.png",
+    link: "https://company-nine-ruddy.vercel.app/en",
+    category: "Website",
+  },
   {
     id: 4.1,
     title: "PathWay",
@@ -70,16 +80,6 @@ export const dataOfProjects: Project[] = [
     image: "/assets/pathway.png",
     link: "https://pathway-red.vercel.app/en",
     category: "Landing Page",
-  },
-  {
-    id: 4.2,
-    title: "Real Estate Company",
-    description:
-      "Real Estate Company is a comprehensive platform designed to streamline , Effortlessly turn your ideas into a fully functional, responsive, no-code SaaS website in just minutes with the set of free components for Framer.",
-    tech: "Next.js | TypeScript | Next-Intl | Tailwind CSS | CSS(3) | HTML(5) | Git | GitHub | Vercel",
-    image: "/assets/company.png",
-    link: "https://company-nine-ruddy.vercel.app/en",
-    category: "Website",
   },
   {
     id: 6,
