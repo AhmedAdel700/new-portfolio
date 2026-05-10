@@ -25,7 +25,7 @@ export const dataOfProjects: Project[] = [
     id: 0,
     title: "Agentic AI",
     description:
-      "Agentic AI is a cutting-edge artificial intelligence platform that empowers businesses with intelligent automation and data-driven insights. It transform enterprise operations by engineering autonomous systems that execute real work — not just provide recommendations. With Agentic AI, organizations can streamline processes, enhance decision-making.",
+      "Agentic AI is a cutting-edge artificial intelligence platform that empowers businesses with intelligent automation and data-driven insights. It transform enterprise operations by engineering autonomous systems that execute real work — not just provide recommendations.",
     tech: "Next.js | TypeScript | Tailwind CSS | CSS(3) | Figma | Next-Intl",
     image: "/assets/Agentic.png",
     link: "https://agentic-ai-beta-pearl.vercel.app/en",
